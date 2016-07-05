@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -61,7 +62,7 @@
                                 <rect key="frame" x="0.0" y="28" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="XGd-rd-uSY" id="MOy-Sv-2I7">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -80,18 +81,55 @@
         <!--Rezepte-->
         <scene sceneID="icg-Wk-kko">
             <objects>
-                <tableViewController id="mSY-at-Z1Z" userLabel="Rezepte" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="d39-k0-Bt0">
+                <tableViewController id="mSY-at-Z1Z" userLabel="Rezepte" customClass="RezepteTableViewController" customModule="Nussalergie" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="71" sectionHeaderHeight="28" sectionFooterHeight="28" id="d39-k0-Bt0">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="dzI-TW-OdH">
-                                <rect key="frame" x="0.0" y="92" width="600" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="rezeptCell" rowHeight="80" id="dzI-TW-OdH">
+                                <rect key="frame" x="0.0" y="92" width="600" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dzI-TW-OdH" id="QdQ-xI-Y9a">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="79"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hCW-V7-gyF">
+                                            <rect key="frame" x="8" y="8" width="64" height="64"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="64" id="NYS-05-sSM"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rezept Titel Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vey-Sy-0Y0">
+                                            <rect key="frame" x="80" y="8" width="278" height="34"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="278" id="JlK-5R-ygf"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" tag="3" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rezept Kochzeit Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0W0-bV-Krm">
+                                            <rect key="frame" x="80" y="50" width="170" height="21"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="21" id="fRG-kE-Jgb"/>
+                                                <constraint firstAttribute="width" constant="170" id="kNZ-io-LPZ"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="hCW-V7-gyF" firstAttribute="centerY" secondItem="QdQ-xI-Y9a" secondAttribute="centerY" id="7wY-57-tpZ"/>
+                                        <constraint firstItem="0W0-bV-Krm" firstAttribute="bottom" secondItem="QdQ-xI-Y9a" secondAttribute="bottomMargin" id="DOA-RJ-we1"/>
+                                        <constraint firstItem="hCW-V7-gyF" firstAttribute="leading" secondItem="QdQ-xI-Y9a" secondAttribute="leadingMargin" id="Poh-Rf-ZNo"/>
+                                        <constraint firstItem="vey-Sy-0Y0" firstAttribute="leading" secondItem="0W0-bV-Krm" secondAttribute="leading" id="Twz-zx-mwj"/>
+                                        <constraint firstItem="hCW-V7-gyF" firstAttribute="top" secondItem="QdQ-xI-Y9a" secondAttribute="topMargin" id="YRz-eG-lbQ"/>
+                                        <constraint firstItem="vey-Sy-0Y0" firstAttribute="top" secondItem="hCW-V7-gyF" secondAttribute="top" id="ZDV-wM-rhd"/>
+                                        <constraint firstItem="vey-Sy-0Y0" firstAttribute="leading" secondItem="hCW-V7-gyF" secondAttribute="trailing" constant="8" symbolic="YES" id="ZUW-oO-9CU"/>
+                                        <constraint firstItem="0W0-bV-Krm" firstAttribute="top" secondItem="vey-Sy-0Y0" secondAttribute="bottom" constant="8" id="aDz-aC-4pg"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>
@@ -100,7 +138,7 @@
                             <outlet property="delegate" destination="mSY-at-Z1Z" id="KIg-kI-bRH"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="RhH-hO-X2N"/>
+                    <navigationItem key="navigationItem" title="Rezepte" id="RhH-hO-X2N"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8aF-ee-Rq0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -119,7 +157,7 @@
                                 <rect key="frame" x="0.0" y="28" width="600" height="20"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="zIB-ik-J8Y" id="aJR-dN-eUj">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="19.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="19"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -135,10 +173,10 @@
             </objects>
             <point key="canvasLocation" x="877" y="1753"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Tab Bar View Controller-->
         <scene sceneID="MIY-20-mPh">
             <objects>
-                <tabBarController id="fSw-JP-fgQ" sceneMemberID="viewController">
+                <tabBarController id="fSw-JP-fgQ" customClass="TabBarViewController" customModule="Nussalergie" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" id="9bf-8L-D11">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -157,7 +195,7 @@
         <!--Rezepte-->
         <scene sceneID="6Cp-Z8-Bet">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="X4n-rE-aeq" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="X4n-rE-aeq" customClass="RezepteNavigationController" customModule="Nussalergie" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Rezepte" id="6sz-Gx-Mih" userLabel="Rezepte"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="trz-ki-Vkw">

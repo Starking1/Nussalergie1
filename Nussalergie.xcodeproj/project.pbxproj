@@ -12,7 +12,32 @@
 		26F781781D297F8D00DFEF5E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 26F781761D297F8D00DFEF5E /* Main.storyboard */; };
 		26F7817A1D297F8D00DFEF5E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 26F781791D297F8D00DFEF5E /* Assets.xcassets */; };
 		26F7817D1D297F8D00DFEF5E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 26F7817B1D297F8D00DFEF5E /* LaunchScreen.storyboard */; };
+		8172EC0A1D2BF86100B1A4E4 /* RezepteTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8172EC091D2BF86100B1A4E4 /* RezepteTableViewController.swift */; };
+		8172EC0C1D2BFCB900B1A4E4 /* burger.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8172EC0B1D2BFCB900B1A4E4 /* burger.jpg */; };
+		8172EC0F1D2BFE8E00B1A4E4 /* spareribs.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8172EC0E1D2BFE8E00B1A4E4 /* spareribs.jpg */; };
+		8172EC111D2C01F800B1A4E4 /* Rezept.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8172EC101D2C01F800B1A4E4 /* Rezept.swift */; };
+		8172EC131D2C044800B1A4E4 /* brot.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8172EC121D2C044800B1A4E4 /* brot.jpg */; };
+		8172EC151D2C045F00B1A4E4 /* salz.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8172EC141D2C045F00B1A4E4 /* salz.jpg */; };
+		8172EC171D2C048300B1A4E4 /* apfel.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8172EC161D2C048300B1A4E4 /* apfel.jpg */; };
+		8172EC1D1D2C0A1600B1A4E4 /* RezepteNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8172EC1C1D2C0A1600B1A4E4 /* RezepteNavigationController.swift */; };
+		8172EC231D2C0E3A00B1A4E4 /* FontAwesome.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8172EC221D2C0E3A00B1A4E4 /* FontAwesome.framework */; };
+		8172EC241D2C0E3A00B1A4E4 /* FontAwesome.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8172EC221D2C0E3A00B1A4E4 /* FontAwesome.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		8172EC291D2C0F5100B1A4E4 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8172EC281D2C0F5100B1A4E4 /* TabBarViewController.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		8172EC251D2C0E3B00B1A4E4 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				8172EC241D2C0E3A00B1A4E4 /* FontAwesome.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		26F7816F1D297F8D00DFEF5E /* Nussalergie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Nussalergie.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -22,6 +47,16 @@
 		26F781791D297F8D00DFEF5E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		26F7817C1D297F8D00DFEF5E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		26F7817E1D297F8D00DFEF5E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8172EC091D2BF86100B1A4E4 /* RezepteTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RezepteTableViewController.swift; sourceTree = "<group>"; };
+		8172EC0B1D2BFCB900B1A4E4 /* burger.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = burger.jpg; sourceTree = "<group>"; };
+		8172EC0E1D2BFE8E00B1A4E4 /* spareribs.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = spareribs.jpg; sourceTree = "<group>"; };
+		8172EC101D2C01F800B1A4E4 /* Rezept.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Rezept.swift; sourceTree = "<group>"; };
+		8172EC121D2C044800B1A4E4 /* brot.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = brot.jpg; sourceTree = "<group>"; };
+		8172EC141D2C045F00B1A4E4 /* salz.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = salz.jpg; sourceTree = "<group>"; };
+		8172EC161D2C048300B1A4E4 /* apfel.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = apfel.jpg; sourceTree = "<group>"; };
+		8172EC1C1D2C0A1600B1A4E4 /* RezepteNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RezepteNavigationController.swift; path = ../RezepteNavigationController.swift; sourceTree = "<group>"; };
+		8172EC221D2C0E3A00B1A4E4 /* FontAwesome.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FontAwesome.framework; path = Carthage/Build/iOS/FontAwesome.framework; sourceTree = "<group>"; };
+		8172EC281D2C0F5100B1A4E4 /* TabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,6 +64,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8172EC231D2C0E3A00B1A4E4 /* FontAwesome.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -39,7 +75,9 @@
 			isa = PBXGroup;
 			children = (
 				26F781711D297F8D00DFEF5E /* Nussalergie */,
+				8172EC0D1D2BFCCD00B1A4E4 /* images */,
 				26F781701D297F8D00DFEF5E /* Products */,
+				8172EC261D2C0E7A00B1A4E4 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -56,12 +94,44 @@
 			children = (
 				26F781721D297F8D00DFEF5E /* AppDelegate.swift */,
 				26F781741D297F8D00DFEF5E /* ViewController.swift */,
+				8172EC271D2C0EB700B1A4E4 /* Rezepte */,
+				8172EC281D2C0F5100B1A4E4 /* TabBarViewController.swift */,
 				26F781761D297F8D00DFEF5E /* Main.storyboard */,
-				26F781791D297F8D00DFEF5E /* Assets.xcassets */,
 				26F7817B1D297F8D00DFEF5E /* LaunchScreen.storyboard */,
+				26F781791D297F8D00DFEF5E /* Assets.xcassets */,
 				26F7817E1D297F8D00DFEF5E /* Info.plist */,
 			);
 			path = Nussalergie;
+			sourceTree = "<group>";
+		};
+		8172EC0D1D2BFCCD00B1A4E4 /* images */ = {
+			isa = PBXGroup;
+			children = (
+				8172EC0E1D2BFE8E00B1A4E4 /* spareribs.jpg */,
+				8172EC0B1D2BFCB900B1A4E4 /* burger.jpg */,
+				8172EC121D2C044800B1A4E4 /* brot.jpg */,
+				8172EC141D2C045F00B1A4E4 /* salz.jpg */,
+				8172EC161D2C048300B1A4E4 /* apfel.jpg */,
+			);
+			name = images;
+			sourceTree = "<group>";
+		};
+		8172EC261D2C0E7A00B1A4E4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8172EC221D2C0E3A00B1A4E4 /* FontAwesome.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		8172EC271D2C0EB700B1A4E4 /* Rezepte */ = {
+			isa = PBXGroup;
+			children = (
+				8172EC091D2BF86100B1A4E4 /* RezepteTableViewController.swift */,
+				8172EC1C1D2C0A1600B1A4E4 /* RezepteNavigationController.swift */,
+				8172EC101D2C01F800B1A4E4 /* Rezept.swift */,
+			);
+			name = Rezepte;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -74,6 +144,7 @@
 				26F7816B1D297F8D00DFEF5E /* Sources */,
 				26F7816C1D297F8D00DFEF5E /* Frameworks */,
 				26F7816D1D297F8D00DFEF5E /* Resources */,
+				8172EC251D2C0E3B00B1A4E4 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -122,9 +193,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8172EC151D2C045F00B1A4E4 /* salz.jpg in Resources */,
+				8172EC0C1D2BFCB900B1A4E4 /* burger.jpg in Resources */,
 				26F7817D1D297F8D00DFEF5E /* LaunchScreen.storyboard in Resources */,
 				26F7817A1D297F8D00DFEF5E /* Assets.xcassets in Resources */,
+				8172EC131D2C044800B1A4E4 /* brot.jpg in Resources */,
 				26F781781D297F8D00DFEF5E /* Main.storyboard in Resources */,
+				8172EC0F1D2BFE8E00B1A4E4 /* spareribs.jpg in Resources */,
+				8172EC171D2C048300B1A4E4 /* apfel.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -136,7 +212,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				26F781751D297F8D00DFEF5E /* ViewController.swift in Sources */,
+				8172EC111D2C01F800B1A4E4 /* Rezept.swift in Sources */,
+				8172EC1D1D2C0A1600B1A4E4 /* RezepteNavigationController.swift in Sources */,
 				26F781731D297F8D00DFEF5E /* AppDelegate.swift in Sources */,
+				8172EC291D2C0F5100B1A4E4 /* TabBarViewController.swift in Sources */,
+				8172EC0A1D2BF86100B1A4E4 /* RezepteTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -251,6 +331,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = Nussalergie/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = s.Nussalergie;
@@ -262,6 +346,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = Nussalergie/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = s.Nussalergie;
@@ -288,6 +376,7 @@
 				26F781831D297F8D00DFEF5E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
