@@ -13,7 +13,6 @@ class RezepteNavigationController: UINavigationController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        //print(self.navigationController?.toolbar.items)
     }
 
     override func didReceiveMemoryWarning() {

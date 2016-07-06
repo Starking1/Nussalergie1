@@ -23,6 +23,7 @@
 		8172EC231D2C0E3A00B1A4E4 /* FontAwesome.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8172EC221D2C0E3A00B1A4E4 /* FontAwesome.framework */; };
 		8172EC241D2C0E3A00B1A4E4 /* FontAwesome.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8172EC221D2C0E3A00B1A4E4 /* FontAwesome.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8172EC291D2C0F5100B1A4E4 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8172EC281D2C0F5100B1A4E4 /* TabBarViewController.swift */; };
+		81D47D8D1D2D4413005C767A /* RezepteDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D47D8C1D2D4413005C767A /* RezepteDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -57,6 +58,7 @@
 		8172EC1C1D2C0A1600B1A4E4 /* RezepteNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RezepteNavigationController.swift; path = ../RezepteNavigationController.swift; sourceTree = "<group>"; };
 		8172EC221D2C0E3A00B1A4E4 /* FontAwesome.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FontAwesome.framework; path = Carthage/Build/iOS/FontAwesome.framework; sourceTree = "<group>"; };
 		8172EC281D2C0F5100B1A4E4 /* TabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
+		81D47D8C1D2D4413005C767A /* RezepteDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RezepteDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,6 +130,7 @@
 			isa = PBXGroup;
 			children = (
 				8172EC091D2BF86100B1A4E4 /* RezepteTableViewController.swift */,
+				81D47D8C1D2D4413005C767A /* RezepteDetailViewController.swift */,
 				8172EC1C1D2C0A1600B1A4E4 /* RezepteNavigationController.swift */,
 				8172EC101D2C01F800B1A4E4 /* Rezept.swift */,
 			);
@@ -211,6 +214,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				81D47D8D1D2D4413005C767A /* RezepteDetailViewController.swift in Sources */,
 				26F781751D297F8D00DFEF5E /* ViewController.swift in Sources */,
 				8172EC111D2C01F800B1A4E4 /* Rezept.swift in Sources */,
 				8172EC1D1D2C0A1600B1A4E4 /* RezepteNavigationController.swift in Sources */,

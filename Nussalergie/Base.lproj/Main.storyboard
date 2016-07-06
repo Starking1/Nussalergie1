@@ -62,7 +62,7 @@
                                 <rect key="frame" x="0.0" y="28" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="XGd-rd-uSY" id="MOy-Sv-2I7">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -91,7 +91,7 @@
                                 <rect key="frame" x="0.0" y="92" width="600" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dzI-TW-OdH" id="QdQ-xI-Y9a">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="79.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="79"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hCW-V7-gyF">
@@ -132,7 +132,7 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="HgD-F3-VSh" kind="show" id="wff-J2-KuI"/>
+                                    <segue destination="HgD-F3-VSh" kind="show" identifier="rezeptDetailSegue" id="wff-J2-KuI"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -147,10 +147,10 @@
             </objects>
             <point key="canvasLocation" x="1713" y="1057"/>
         </scene>
-        <!--View Controller-->
+        <!--Rezepte Detail View Controller-->
         <scene sceneID="sYJ-fU-pEk">
             <objects>
-                <viewController id="HgD-F3-VSh" sceneMemberID="viewController">
+                <viewController id="HgD-F3-VSh" customClass="RezepteDetailViewController" customModule="Nussalergie" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="I5Z-ax-oNm"/>
                         <viewControllerLayoutGuide type="bottom" id="fgU-Uw-Sb3"/>
@@ -158,29 +158,12 @@
                     <view key="view" contentMode="scaleToFill" id="2XG-LK-2aD">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Zubereitung" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V0d-QG-l7b">
-                                <rect key="frame" x="20" y="166" width="191" height="34"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yJl-aX-C39">
-                                <rect key="frame" x="340" y="72" width="240" height="128"/>
-                            </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Rezept Titel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pGf-OO-pRk">
-                                <rect key="frame" x="20" y="72" width="191" height="42"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qje-yM-p9w" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2466" y="1071"/>
+            <point key="canvasLocation" x="2480" y="1057"/>
         </scene>
         <!--Einkaufsliste-->
         <scene sceneID="57m-8B-huU">
@@ -195,7 +178,7 @@
                                 <rect key="frame" x="0.0" y="28" width="600" height="20"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="zIB-ik-J8Y" id="aJR-dN-eUj">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="19.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="19"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
