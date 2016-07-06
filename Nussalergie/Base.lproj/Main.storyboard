@@ -49,35 +49,6 @@
             </objects>
             <point key="canvasLocation" x="-222" y="871"/>
         </scene>
-        <!--Produkte-->
-        <scene sceneID="vmP-Ct-qvc">
-            <objects>
-                <tableViewController title="Produkte" id="F1N-66-P1p" userLabel="Produkte" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="ktm-5R-WWh">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="XGd-rd-uSY">
-                                <rect key="frame" x="0.0" y="28" width="600" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="XGd-rd-uSY" id="MOy-Sv-2I7">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="F1N-66-P1p" id="UZv-Xf-IlN"/>
-                            <outlet property="delegate" destination="F1N-66-P1p" id="0Ie-a5-Err"/>
-                        </connections>
-                    </tableView>
-                    <tabBarItem key="tabBarItem" title="Produkte" id="DBe-IR-QFk" userLabel="Produkte"/>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dQ6-b1-vAu" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="877" y="345"/>
-        </scene>
         <!--Rezepte-->
         <scene sceneID="icg-Wk-kko">
             <objects>
@@ -222,7 +193,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="70" id="tdx-Dd-X0q" userLabel="produktCell">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="produktCell" rowHeight="70" id="tdx-Dd-X0q" userLabel="produktCell">
                                 <rect key="frame" x="0.0" y="92" width="600" height="70"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="tdx-Dd-X0q" id="1A3-Q3-VNl">
