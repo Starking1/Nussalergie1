@@ -15,6 +15,7 @@
 		26F781781D297F8D00DFEF5E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 26F781761D297F8D00DFEF5E /* Main.storyboard */; };
 		26F7817A1D297F8D00DFEF5E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 26F781791D297F8D00DFEF5E /* Assets.xcassets */; };
 		26F7817D1D297F8D00DFEF5E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 26F7817B1D297F8D00DFEF5E /* LaunchScreen.storyboard */; };
+		81329D571D2DA78F00C65978 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 81329D561D2DA78F00C65978 /* GoogleService-Info.plist */; };
 		8172EC0A1D2BF86100B1A4E4 /* RezepteTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8172EC091D2BF86100B1A4E4 /* RezepteTableViewController.swift */; };
 		8172EC0C1D2BFCB900B1A4E4 /* burger.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8172EC0B1D2BFCB900B1A4E4 /* burger.jpg */; };
 		8172EC0F1D2BFE8E00B1A4E4 /* spareribs.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8172EC0E1D2BFE8E00B1A4E4 /* spareribs.jpg */; };
@@ -27,6 +28,7 @@
 		8172EC241D2C0E3A00B1A4E4 /* FontAwesome.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8172EC221D2C0E3A00B1A4E4 /* FontAwesome.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8172EC291D2C0F5100B1A4E4 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8172EC281D2C0F5100B1A4E4 /* TabBarViewController.swift */; };
 		81D47D8D1D2D4413005C767A /* RezepteDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D47D8C1D2D4413005C767A /* RezepteDetailViewController.swift */; };
+		A90B8FD13AF63FFC6D938951 /* libPods-Nussalergie.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 32EC77495564DBB16BCCA941 /* libPods-Nussalergie.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -44,6 +46,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1AD57C49C61753BB60AE4750 /* Pods-Nussalergie.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Nussalergie.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Nussalergie/Pods-Nussalergie.debug.xcconfig"; sourceTree = "<group>"; };
 		26391F2F1D2D46B700A23140 /* Produkt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Produkt.swift; sourceTree = "<group>"; };
 		26391F351D2D4F3700A23140 /* ProdukteTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProdukteTableViewController.swift; sourceTree = "<group>"; };
 		26391F371D2D4F4C00A23140 /* ProdukteNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProdukteNavigationController.swift; sourceTree = "<group>"; };
@@ -54,6 +57,9 @@
 		26F781791D297F8D00DFEF5E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		26F7817C1D297F8D00DFEF5E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		26F7817E1D297F8D00DFEF5E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2C690181DC9B49FB0CDE0264 /* Pods-Nussalergie.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Nussalergie.release.xcconfig"; path = "Pods/Target Support Files/Pods-Nussalergie/Pods-Nussalergie.release.xcconfig"; sourceTree = "<group>"; };
+		32EC77495564DBB16BCCA941 /* libPods-Nussalergie.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Nussalergie.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		81329D561D2DA78F00C65978 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8172EC091D2BF86100B1A4E4 /* RezepteTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RezepteTableViewController.swift; sourceTree = "<group>"; };
 		8172EC0B1D2BFCB900B1A4E4 /* burger.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = burger.jpg; sourceTree = "<group>"; };
 		8172EC0E1D2BFE8E00B1A4E4 /* spareribs.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = spareribs.jpg; sourceTree = "<group>"; };
@@ -73,6 +79,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8172EC231D2C0E3A00B1A4E4 /* FontAwesome.framework in Frameworks */,
+				A90B8FD13AF63FFC6D938951 /* libPods-Nussalergie.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -96,6 +103,7 @@
 				8172EC0D1D2BFCCD00B1A4E4 /* images */,
 				26F781701D297F8D00DFEF5E /* Products */,
 				8172EC261D2C0E7A00B1A4E4 /* Frameworks */,
+				C2E231E19F5AE096795F7F6F /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -119,6 +127,7 @@
 				26F7817B1D297F8D00DFEF5E /* LaunchScreen.storyboard */,
 				26F781791D297F8D00DFEF5E /* Assets.xcassets */,
 				26F7817E1D297F8D00DFEF5E /* Info.plist */,
+				81329D561D2DA78F00C65978 /* GoogleService-Info.plist */,
 			);
 			path = Nussalergie;
 			sourceTree = "<group>";
@@ -139,6 +148,7 @@
 			isa = PBXGroup;
 			children = (
 				8172EC221D2C0E3A00B1A4E4 /* FontAwesome.framework */,
+				32EC77495564DBB16BCCA941 /* libPods-Nussalergie.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -154,6 +164,15 @@
 			name = Rezepte;
 			sourceTree = "<group>";
 		};
+		C2E231E19F5AE096795F7F6F /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				1AD57C49C61753BB60AE4750 /* Pods-Nussalergie.debug.xcconfig */,
+				2C690181DC9B49FB0CDE0264 /* Pods-Nussalergie.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -161,10 +180,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 26F781811D297F8D00DFEF5E /* Build configuration list for PBXNativeTarget "Nussalergie" */;
 			buildPhases = (
+				48755461B266DA746F8C2DD0 /* Check Pods Manifest.lock */,
 				26F7816B1D297F8D00DFEF5E /* Sources */,
 				26F7816C1D297F8D00DFEF5E /* Frameworks */,
 				26F7816D1D297F8D00DFEF5E /* Resources */,
 				8172EC251D2C0E3B00B1A4E4 /* Embed Frameworks */,
+				96BD98C977D4B9742C71181B /* Embed Pods Frameworks */,
+				08C9F1EC04535B3E45D1476B /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -215,6 +237,7 @@
 			files = (
 				8172EC151D2C045F00B1A4E4 /* salz.jpg in Resources */,
 				8172EC0C1D2BFCB900B1A4E4 /* burger.jpg in Resources */,
+				81329D571D2DA78F00C65978 /* GoogleService-Info.plist in Resources */,
 				26F7817D1D297F8D00DFEF5E /* LaunchScreen.storyboard in Resources */,
 				26F7817A1D297F8D00DFEF5E /* Assets.xcassets in Resources */,
 				8172EC131D2C044800B1A4E4 /* brot.jpg in Resources */,
@@ -225,6 +248,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		08C9F1EC04535B3E45D1476B /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Nussalergie/Pods-Nussalergie-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		48755461B266DA746F8C2DD0 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		96BD98C977D4B9742C71181B /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Nussalergie/Pods-Nussalergie-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		26F7816B1D297F8D00DFEF5E /* Sources */ = {
@@ -353,6 +424,7 @@
 		};
 		26F781821D297F8D00DFEF5E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1AD57C49C61753BB60AE4750 /* Pods-Nussalergie.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -368,6 +440,7 @@
 		};
 		26F781831D297F8D00DFEF5E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2C690181DC9B49FB0CDE0264 /* Pods-Nussalergie.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				FRAMEWORK_SEARCH_PATHS = (

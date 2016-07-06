@@ -7,24 +7,30 @@
 //
 
 import UIKit
+import Firebase
 
 class RezepteTableViewController: UITableViewController {
     
+    let rootRef = FIRDatabase.database().reference()
     
-    let rezepteArray = [Rezept(name: "Burger", zeit: 30, image: UIImage(named: "burger.jpg")!),
-                        Rezept(name: "Spareribs", zeit: 40, image: UIImage(named: "spareribs.jpg")!),
-                        Rezept(name: "Brot", zeit: 25, image: UIImage(named: "brot.jpg")!),
-                        Rezept(name: "Salz", zeit: 0, image: UIImage(named: "salz.jpg")!),
-                        Rezept(name: "Apfel", zeit: 69, image: UIImage(named: "apfel.jpg")!)]
+    var rezepteArray = [Rezept]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        //Loading From Database
+        rootRef.child("Rezepte").child("Rezepte").observeEventType(.Value) { (snap: FIRDataSnapshot) in
+            for child in snap.children{
+                self.rezepteArray.append(Rezept(name: child.value?["name"] as! String, zeit: child.value?["zeit"] as! Int, image: UIImage(named: child.value?["bild"] as! String)!))
+                self.tableView.reloadData()
+            }
+        }
+        
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
     }
 
     override func didReceiveMemoryWarning() {
