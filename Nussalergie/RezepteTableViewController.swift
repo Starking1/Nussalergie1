@@ -20,10 +20,10 @@ class RezepteTableViewController: UITableViewController {
         super.viewDidLoad()
 
         //Loading From Database
-        rootRef.child("Rezepte").child("Rezepte").observeEventType(.Value) { (snap: FIRDataSnapshot) in
+        rootRef.child("Rezepte").observeEventType(.Value) { (snap: FIRDataSnapshot) in
             for child in snap.children{
                 
-                // Download in memory with a maximum allowed size of 1MB (1 * 1024 * 1024 bytes)
+                // Download in memory with a maximum allowed size of 3MB (3 * 1024 * 1024 bytes)
                 self.storRef.child(child.value?["bild"] as! String).dataWithMaxSize(3 * 1024 * 1024) { (data, error) -> Void in
                     if (error != nil) {
                         print(error)
@@ -34,8 +34,6 @@ class RezepteTableViewController: UITableViewController {
                         self.tableView.reloadData()
                     }
                 }
-                
-                
             }
         }
         
