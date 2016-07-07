@@ -7,11 +7,12 @@
 //
 
 import UIKit
+import FontAwesome
 
 class ProdukteTableViewController: UITableViewController {
     
     
-    let produktarray = [Produkt(name: "Apfel" , preis: 1.10, menge: 1, einheit: "Stück",image: UIImage(named: "apfel.jpg")!)]
+    let produktarray = [Produkt(name: "Apfel" , preis: 1.10, menge: 1, einheit: "Stück",image: UIImage.fontAwesomeIconWithName(.Apple, textColor: UIColor.blackColor(), size: CGSize(width: 60, height: 60)))]
     
 
 override func viewDidLoad() {

@@ -12,6 +12,7 @@ import Firebase
 class RezepteTableViewController: UITableViewController {
     
     let rootRef = FIRDatabase.database().reference()
+    let storRef = FIRStorage.storage().reference().child("images/")
     
     var rezepteArray = [Rezept]()
     
@@ -21,10 +22,24 @@ class RezepteTableViewController: UITableViewController {
         //Loading From Database
         rootRef.child("Rezepte").child("Rezepte").observeEventType(.Value) { (snap: FIRDataSnapshot) in
             for child in snap.children{
-                self.rezepteArray.append(Rezept(name: child.value?["name"] as! String, zeit: child.value?["zeit"] as! Int, image: UIImage(named: child.value?["bild"] as! String)!))
-                self.tableView.reloadData()
+                
+                // Download in memory with a maximum allowed size of 1MB (1 * 1024 * 1024 bytes)
+                self.storRef.child(child.value?["bild"] as! String).dataWithMaxSize(3 * 1024 * 1024) { (data, error) -> Void in
+                    if (error != nil) {
+                        print(error)
+                    } else {
+                        // Data for "images/island.jpg" is returned
+                        let downloadedImage: UIImage! = UIImage(data: data!)
+                        self.rezepteArray.append(Rezept(name: child.value?["name"] as! String, zeit: child.value?["zeit"] as! Int, image: downloadedImage))
+                        self.tableView.reloadData()
+                    }
+                }
+                
+                
             }
         }
+        
+        
         
     }
     

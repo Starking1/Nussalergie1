@@ -17,12 +17,7 @@
 		26F7817D1D297F8D00DFEF5E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 26F7817B1D297F8D00DFEF5E /* LaunchScreen.storyboard */; };
 		81329D571D2DA78F00C65978 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 81329D561D2DA78F00C65978 /* GoogleService-Info.plist */; };
 		8172EC0A1D2BF86100B1A4E4 /* RezepteTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8172EC091D2BF86100B1A4E4 /* RezepteTableViewController.swift */; };
-		8172EC0C1D2BFCB900B1A4E4 /* burger.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8172EC0B1D2BFCB900B1A4E4 /* burger.jpg */; };
-		8172EC0F1D2BFE8E00B1A4E4 /* spareribs.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8172EC0E1D2BFE8E00B1A4E4 /* spareribs.jpg */; };
 		8172EC111D2C01F800B1A4E4 /* Rezept.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8172EC101D2C01F800B1A4E4 /* Rezept.swift */; };
-		8172EC131D2C044800B1A4E4 /* brot.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8172EC121D2C044800B1A4E4 /* brot.jpg */; };
-		8172EC151D2C045F00B1A4E4 /* salz.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8172EC141D2C045F00B1A4E4 /* salz.jpg */; };
-		8172EC171D2C048300B1A4E4 /* apfel.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8172EC161D2C048300B1A4E4 /* apfel.jpg */; };
 		8172EC1D1D2C0A1600B1A4E4 /* RezepteNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8172EC1C1D2C0A1600B1A4E4 /* RezepteNavigationController.swift */; };
 		8172EC231D2C0E3A00B1A4E4 /* FontAwesome.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8172EC221D2C0E3A00B1A4E4 /* FontAwesome.framework */; };
 		8172EC241D2C0E3A00B1A4E4 /* FontAwesome.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8172EC221D2C0E3A00B1A4E4 /* FontAwesome.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -61,12 +56,7 @@
 		32EC77495564DBB16BCCA941 /* libPods-Nussalergie.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Nussalergie.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		81329D561D2DA78F00C65978 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8172EC091D2BF86100B1A4E4 /* RezepteTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RezepteTableViewController.swift; sourceTree = "<group>"; };
-		8172EC0B1D2BFCB900B1A4E4 /* burger.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = burger.jpg; sourceTree = "<group>"; };
-		8172EC0E1D2BFE8E00B1A4E4 /* spareribs.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = spareribs.jpg; sourceTree = "<group>"; };
 		8172EC101D2C01F800B1A4E4 /* Rezept.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Rezept.swift; sourceTree = "<group>"; };
-		8172EC121D2C044800B1A4E4 /* brot.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = brot.jpg; sourceTree = "<group>"; };
-		8172EC141D2C045F00B1A4E4 /* salz.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = salz.jpg; sourceTree = "<group>"; };
-		8172EC161D2C048300B1A4E4 /* apfel.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = apfel.jpg; sourceTree = "<group>"; };
 		8172EC1C1D2C0A1600B1A4E4 /* RezepteNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RezepteNavigationController.swift; path = ../RezepteNavigationController.swift; sourceTree = "<group>"; };
 		8172EC221D2C0E3A00B1A4E4 /* FontAwesome.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FontAwesome.framework; path = Carthage/Build/iOS/FontAwesome.framework; sourceTree = "<group>"; };
 		8172EC281D2C0F5100B1A4E4 /* TabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
@@ -100,7 +90,6 @@
 			isa = PBXGroup;
 			children = (
 				26F781711D297F8D00DFEF5E /* Nussalergie */,
-				8172EC0D1D2BFCCD00B1A4E4 /* images */,
 				26F781701D297F8D00DFEF5E /* Products */,
 				8172EC261D2C0E7A00B1A4E4 /* Frameworks */,
 				C2E231E19F5AE096795F7F6F /* Pods */,
@@ -130,18 +119,6 @@
 				81329D561D2DA78F00C65978 /* GoogleService-Info.plist */,
 			);
 			path = Nussalergie;
-			sourceTree = "<group>";
-		};
-		8172EC0D1D2BFCCD00B1A4E4 /* images */ = {
-			isa = PBXGroup;
-			children = (
-				8172EC0E1D2BFE8E00B1A4E4 /* spareribs.jpg */,
-				8172EC0B1D2BFCB900B1A4E4 /* burger.jpg */,
-				8172EC121D2C044800B1A4E4 /* brot.jpg */,
-				8172EC141D2C045F00B1A4E4 /* salz.jpg */,
-				8172EC161D2C048300B1A4E4 /* apfel.jpg */,
-			);
-			name = images;
 			sourceTree = "<group>";
 		};
 		8172EC261D2C0E7A00B1A4E4 /* Frameworks */ = {
@@ -235,15 +212,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8172EC151D2C045F00B1A4E4 /* salz.jpg in Resources */,
-				8172EC0C1D2BFCB900B1A4E4 /* burger.jpg in Resources */,
 				81329D571D2DA78F00C65978 /* GoogleService-Info.plist in Resources */,
 				26F7817D1D297F8D00DFEF5E /* LaunchScreen.storyboard in Resources */,
 				26F7817A1D297F8D00DFEF5E /* Assets.xcassets in Resources */,
-				8172EC131D2C044800B1A4E4 /* brot.jpg in Resources */,
 				26F781781D297F8D00DFEF5E /* Main.storyboard in Resources */,
-				8172EC0F1D2BFE8E00B1A4E4 /* spareribs.jpg in Resources */,
-				8172EC171D2C048300B1A4E4 /* apfel.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
