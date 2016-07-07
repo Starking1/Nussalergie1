@@ -24,7 +24,7 @@ class RezepteTableViewController: UITableViewController {
             for child in snap.children{
                 
                 // Download in memory with a maximum allowed size of 3MB (3 * 1024 * 1024 bytes)
-                self.storRef.child(child.value?["bild"] as! String).dataWithMaxSize(3 * 1024 * 1024) { (data, error) -> Void in
+                self.storRef.child(child.value!["bild"] as! String).dataWithMaxSize(3 * 1024 * 1024) { (data, error) -> Void in
                     if (error != nil) {
                         print(error)
                     } else {
