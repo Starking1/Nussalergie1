@@ -28,7 +28,7 @@ class RezepteDetailViewController: UIViewController {
             
         //Elemente für ScrollView initialisieren
         rezeptImageView.frame = CGRectMake(5, 5,view.frame.width-10,view.frame.width-10)
-        rezeptImageView.backgroundColor = UIColor.blackColor()
+        //rezeptImageView.backgroundColor = UIColor.blackColor()
         
         rezeptDescriptionLabel.frame = CGRectMake(5, rezeptImageView.frame.height + 20, view.frame.width-10, 500)
         rezeptDescriptionLabel.text = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius adipisci, sed libero. Iste asperiores suscipit, consequatur debitis animi impedit numquam facilis iusto porro labore dolorem, maxime magni incidunt. Delectus, est! Totam at eius excepturi deleniti sed, error repellat itaque omnis maiores tempora ratione dolor velit minus porro aspernatur repudiandae labore quas adipisci esse, nulla tempore voluptatibus cupiditate. Ab provident, atque. Possimus deserunt nisi perferendis, consequuntur odio et aperiam, est, dicta dolor itaque sunt laborum, magni qui optio illum dolore laudantium similique harum. Eveniet quis, libero eligendi delectus repellendus repudiandae ipsum? Vel nam odio dolorem, voluptas sequi minus quo tempore, animi est quia earum maxime. Reiciendis quae repellat, modi non, veniam natus soluta at optio vitae in excepturi minima eveniet dolor."

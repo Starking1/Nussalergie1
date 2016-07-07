@@ -37,8 +37,6 @@ class RezepteTableViewController: UITableViewController {
             }
         }
         
-        
-        
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -64,6 +62,8 @@ class RezepteTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("rezeptCell", forIndexPath: indexPath)
+        
+        cell.accessoryType = .DisclosureIndicator
         
         let rezept = rezepteArray[indexPath.row] as Rezept
         
