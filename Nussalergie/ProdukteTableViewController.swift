@@ -7,17 +7,41 @@
 //
 
 import UIKit
-import FontAwesome
+import Firebase
+
 
 class ProdukteTableViewController: UITableViewController {
     
+    let rootRef = FIRDatabase.database().reference()
+    let storRef = FIRStorage.storage().reference().child("images/")
     
-    let produktarray = [Produkt(name: "Apfel" , preis: 1.10, menge: 1, einheit: "Stück",image: UIImage.fontAwesomeIconWithName(.Apple, textColor: UIColor.blackColor(), size: CGSize(width: 60, height: 60)))]
+    var produktarray = [Produkt] ()
     
 
 override func viewDidLoad() {
     super.viewDidLoad()
     
+    
+    
+    rootRef.child("Produkte").observeEventType(.Value) { (snap: FIRDataSnapshot) in
+        for child in snap.children{
+            
+            // Download in memory with a maximum allowed size of 3MB (3 * 1024 * 1024 bytes)
+            self.storRef.child(child.value!["bild"] as! String).dataWithMaxSize(3 * 1024 * 1024) { (data, error) -> Void in
+                if (error != nil) {
+                    print(error)
+                } else {
+                    // Data for "images/island.jpg" is returned
+                    let downloadedImage: UIImage! = UIImage(data: data!)
+                    self.produktarray.append(Produkt(name: child.value?["name"] as! String, preis: child.value?["preis"] as! Double,
+                        menge: child.value?["menge"] as! Int,
+                        einheit: child.value?["einheit"] as! String,
+                        image: downloadedImage ))
+                    self.tableView.reloadData()
+                }
+            }
+        }
+    }
     // Uncomment the following line to preserve selection between presentations
     // self.clearsSelectionOnViewWillAppear = false
     
