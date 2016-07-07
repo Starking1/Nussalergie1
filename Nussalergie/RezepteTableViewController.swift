@@ -21,7 +21,7 @@ class RezepteTableViewController: UITableViewController {
 
         //Loading From Database
         rootRef.child("Rezepte").observeEventType(.Value) { (snap: FIRDataSnapshot) in
-            for child in snap.children{
+            for (index,child) in snap.children.enumerate(){
                 
                 // Download in memory with a maximum allowed size of 3MB (3 * 1024 * 1024 bytes)
                 self.storRef.child(child.value!["bild"] as! String).dataWithMaxSize(3 * 1024 * 1024) { (data, error) -> Void in
@@ -30,7 +30,7 @@ class RezepteTableViewController: UITableViewController {
                     } else {
                         // Data for "images/island.jpg" is returned
                         let downloadedImage: UIImage! = UIImage(data: data!)
-                        self.rezepteArray.append(Rezept(name: child.value?["name"] as! String, zeit: child.value?["zeit"] as! Int, image: downloadedImage))
+                        self.rezepteArray.append(Rezept(id: index, name: child.value?["name"] as! String, zeit: child.value?["zeit"] as! Int, image: downloadedImage))
                         self.tableView.reloadData()
                     }
                 }
@@ -134,7 +134,7 @@ class RezepteTableViewController: UITableViewController {
             let rezeptDetailViewController = segue.destinationViewController as! RezepteDetailViewController
             rezeptDetailViewController.rezeptImageView.image = rezept.image
             rezeptDetailViewController.rezeptNavigationTitle = rezept.name
-        
+            rezeptDetailViewController.rezeptID = rezept.id
            
         }
         

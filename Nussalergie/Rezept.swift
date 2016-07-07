@@ -10,11 +10,13 @@ import Foundation
 import UIKit
 
 struct Rezept{
+    var id: Int
     var name: String
     var zeit: Int
     var image: UIImage
     
-    init(name: String, zeit: Int, image: UIImage){
+    init(id: Int, name: String, zeit: Int, image: UIImage){
+        self.id = id
         self.name = name
         self.zeit = zeit
         self.image = image

@@ -22,6 +22,10 @@
 		8172EC231D2C0E3A00B1A4E4 /* FontAwesome.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8172EC221D2C0E3A00B1A4E4 /* FontAwesome.framework */; };
 		8172EC241D2C0E3A00B1A4E4 /* FontAwesome.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8172EC221D2C0E3A00B1A4E4 /* FontAwesome.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8172EC291D2C0F5100B1A4E4 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8172EC281D2C0F5100B1A4E4 /* TabBarViewController.swift */; };
+		818A81501D2EB9FC00E31D50 /* RezeptZutatenTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 818A814F1D2EB9FC00E31D50 /* RezeptZutatenTableViewController.swift */; };
+		818A81521D2EBA3500E31D50 /* RezeptZutat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 818A81511D2EBA3500E31D50 /* RezeptZutat.swift */; };
+		818A81551D2EBC6200E31D50 /* ZutatenCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 818A81531D2EBC6200E31D50 /* ZutatenCell.swift */; };
+		818A81561D2EBC6200E31D50 /* ZutatenCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 818A81541D2EBC6200E31D50 /* ZutatenCell.xib */; };
 		81D47D8D1D2D4413005C767A /* RezepteDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D47D8C1D2D4413005C767A /* RezepteDetailViewController.swift */; };
 		A90B8FD13AF63FFC6D938951 /* libPods-Nussalergie.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 32EC77495564DBB16BCCA941 /* libPods-Nussalergie.a */; };
 /* End PBXBuildFile section */
@@ -60,6 +64,10 @@
 		8172EC1C1D2C0A1600B1A4E4 /* RezepteNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RezepteNavigationController.swift; path = ../RezepteNavigationController.swift; sourceTree = "<group>"; };
 		8172EC221D2C0E3A00B1A4E4 /* FontAwesome.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FontAwesome.framework; path = Carthage/Build/iOS/FontAwesome.framework; sourceTree = "<group>"; };
 		8172EC281D2C0F5100B1A4E4 /* TabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
+		818A814F1D2EB9FC00E31D50 /* RezeptZutatenTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RezeptZutatenTableViewController.swift; sourceTree = "<group>"; };
+		818A81511D2EBA3500E31D50 /* RezeptZutat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RezeptZutat.swift; sourceTree = "<group>"; };
+		818A81531D2EBC6200E31D50 /* ZutatenCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZutatenCell.swift; sourceTree = "<group>"; };
+		818A81541D2EBC6200E31D50 /* ZutatenCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZutatenCell.xib; sourceTree = "<group>"; };
 		81D47D8C1D2D4413005C767A /* RezepteDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RezepteDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -135,10 +143,22 @@
 			children = (
 				8172EC091D2BF86100B1A4E4 /* RezepteTableViewController.swift */,
 				81D47D8C1D2D4413005C767A /* RezepteDetailViewController.swift */,
+				818A81571D2EBC6F00E31D50 /* RezeptZutatenTableView */,
 				8172EC1C1D2C0A1600B1A4E4 /* RezepteNavigationController.swift */,
 				8172EC101D2C01F800B1A4E4 /* Rezept.swift */,
 			);
 			name = Rezepte;
+			sourceTree = "<group>";
+		};
+		818A81571D2EBC6F00E31D50 /* RezeptZutatenTableView */ = {
+			isa = PBXGroup;
+			children = (
+				818A814F1D2EB9FC00E31D50 /* RezeptZutatenTableViewController.swift */,
+				818A81531D2EBC6200E31D50 /* ZutatenCell.swift */,
+				818A81541D2EBC6200E31D50 /* ZutatenCell.xib */,
+				818A81511D2EBA3500E31D50 /* RezeptZutat.swift */,
+			);
+			name = RezeptZutatenTableView;
 			sourceTree = "<group>";
 		};
 		C2E231E19F5AE096795F7F6F /* Pods */ = {
@@ -214,6 +234,7 @@
 			files = (
 				81329D571D2DA78F00C65978 /* GoogleService-Info.plist in Resources */,
 				26F7817D1D297F8D00DFEF5E /* LaunchScreen.storyboard in Resources */,
+				818A81561D2EBC6200E31D50 /* ZutatenCell.xib in Resources */,
 				26F7817A1D297F8D00DFEF5E /* Assets.xcassets in Resources */,
 				26F781781D297F8D00DFEF5E /* Main.storyboard in Resources */,
 			);
@@ -275,6 +296,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				81D47D8D1D2D4413005C767A /* RezepteDetailViewController.swift in Sources */,
+				818A81501D2EB9FC00E31D50 /* RezeptZutatenTableViewController.swift in Sources */,
+				818A81551D2EBC6200E31D50 /* ZutatenCell.swift in Sources */,
+				818A81521D2EBA3500E31D50 /* RezeptZutat.swift in Sources */,
 				26F781751D297F8D00DFEF5E /* ViewController.swift in Sources */,
 				8172EC111D2C01F800B1A4E4 /* Rezept.swift in Sources */,
 				8172EC1D1D2C0A1600B1A4E4 /* RezepteNavigationController.swift in Sources */,
