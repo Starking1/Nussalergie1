@@ -11,7 +11,6 @@ import Firebase
 
 class NeueRezeptViewController: UIViewController {
     
-    
     let rezeptNavigationTitle: String = "Neues Rezept"
     let rezeptImageView: UIImageView = UIImageView()
     let ImageViewwidth: CGFloat = 150;
@@ -24,27 +23,15 @@ class NeueRezeptViewController: UIViewController {
     let ZubereitungsTextfieldheight: CGFloat = 200;
     let rezeptZutatenLabel:UILabel = UILabel()
     let rezeptZutatenButton: UIButton = UIButton()
-    let rezeptzutatenbuttonLabel: UILabel = UILabel()
-    
     var rezeptID: Int = Int()
-    
     let scrollView: UIScrollView = UIScrollView()
-   
-    
-    
-    
-    
-    
-    
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do view setup here.
         
          self.navigationItem.title = "Neues Rezept"
         scrollView.frame = CGRectMake(0, 0, view.frame.width, view.frame.height)
         scrollView.contentSize = CGSize(width: view.frame.width, height: 2000)
-        
         
         rezeptImageView.frame = CGRectMake(view.frame.width - ImageViewwidth - 20, 20 ,ImageViewwidth,ImageViewwidth)
         rezeptImageView.backgroundColor = UIColor.blackColor()
@@ -61,10 +48,7 @@ class NeueRezeptViewController: UIViewController {
         rezeptZutatenLabel.frame = CGRectMake(20, 210 + ZubereitungsTextfieldheight + 10, 100, 30)
         rezeptZutatenLabel.text = "Zutaten"
         rezeptZutatenButton.frame = CGRectMake(view.frame.width - 120, 210 + ZubereitungsTextfieldheight + 10, 100, 30)
-        rezeptzutatenbuttonLabel.frame = CGRectMake(view.frame.width - 120, 210 + ZubereitungsTextfieldheight + 10, 100, 30)
-        rezeptzutatenbuttonLabel.text = "neue Zutat"
-        
-        
+
         scrollView.addSubview(rezeptImageView)
         scrollView.addSubview(rezeptNameLabel)
         scrollView.addSubview(rezeptNameTextfield)
@@ -74,9 +58,6 @@ class NeueRezeptViewController: UIViewController {
         scrollView.addSubview(rezeptZubereitungstext)
         scrollView.addSubview(rezeptZutatenLabel)
         scrollView.addSubview(rezeptZutatenButton)
-        scrollView.addSubview(rezeptzutatenbuttonLabel)
-        
-        
         
         view.addSubview(scrollView)
     }

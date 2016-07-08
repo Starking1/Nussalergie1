@@ -29,16 +29,17 @@ class RezeptZutatenTableViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return zutatenArray.count
+        return 0
+ //       return zutatenArray.count
     }
 
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("zutatenCell", forIndexPath: indexPath)
 
-        let zutat = zutatenArray[indexPath.row] as RezeptZutat
+       // let zutat = zutatenArray[indexPath.row] as RezeptZutat
         
-        cell.textLabel?.text = zutat.name
+     //   cell.textLabel?.text = zutat.name
 
         return cell
     }
