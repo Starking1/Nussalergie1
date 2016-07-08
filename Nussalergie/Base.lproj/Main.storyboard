@@ -76,7 +76,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="neues Rezept"/>
                                 <connections>
-                                    <segue destination="NiB-fM-eZL" kind="showDetail" id="qDN-3p-JRR"/>
+                                    <segue destination="NiB-fM-eZL" kind="show" id="3UK-DW-AUp"/>
                                 </connections>
                             </button>
                         </barButtonItem>
@@ -89,7 +89,7 @@
         <!--Neue Rezept View Controller-->
         <scene sceneID="JCI-00-v9J">
             <objects>
-                <viewController id="NiB-fM-eZL" userLabel="Neue Rezept View Controller" sceneMemberID="viewController">
+                <viewController id="NiB-fM-eZL" customClass="NeueRezeptViewController" customModule="Nussalergie" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="eCz-XV-74L"/>
                         <viewControllerLayoutGuide type="bottom" id="lL1-GM-kwb"/>
