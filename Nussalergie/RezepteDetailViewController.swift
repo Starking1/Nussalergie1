@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 
-class RezepteDetailViewController: UIViewController {
+class RezepteDetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     let rezeptImageView: UIImageView = UIImageView()
     var rezeptNavigationTitle: String = String()
@@ -20,11 +20,17 @@ class RezepteDetailViewController: UIViewController {
     let zutatenTableView: UITableView = UITableView()
     
     
+    var zutatenArray = [RezeptZutat(name: "Ei", menge: 2, einheit: "Stk")]
+    
     //let zubereitungsRef = FIRDatabase.database().reference().child("Zubereitung").child("0")
     let zutatenRef =  FIRDatabase.database().reference().child("Zutaten").child("0")
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        zutatenTableView.delegate = self
+        zutatenTableView.dataSource = self
+        zutatenTableView.registerNib(UINib(nibName: "ZutatenCell", bundle: nil), forCellReuseIdentifier: "zutatenCell")
         
         zutatenRef.observeSingleEventOfType(.Value, withBlock: { (snapshot) in
             print(snapshot)
@@ -49,6 +55,7 @@ class RezepteDetailViewController: UIViewController {
         rezeptDescriptionLabel.textColor = UIColor.darkGrayColor()
         rezeptDescriptionLabel.backgroundColor = UIColor(red: 0.9021, green: 0.8982, blue: 0.7637, alpha: 1.0)
         
+        
         zutatenTableView.frame = CGRectMake(5, rezeptImageView.frame.height + rezeptDescriptionLabel.frame.height + 50, view.frame.width-10, 200)
         zutatenTableView.backgroundColor = UIColor.blueColor()
         
@@ -65,6 +72,22 @@ class RezepteDetailViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 5
+        
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("zutatenCell", forIndexPath: indexPath)
+        
+        cell.selectionStyle = .None
+        
+        return cell
+    }
 
     /*
     // MARK: - Navigation

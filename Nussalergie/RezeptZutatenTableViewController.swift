@@ -10,7 +10,7 @@ import UIKit
 
 class RezeptZutatenTableViewController: UITableViewController {
     
-    var zutatenArray = [RezeptZutat(name: "Ei", menge: 2, einheit: "Stk")]
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
