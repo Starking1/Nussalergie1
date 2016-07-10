@@ -130,6 +130,7 @@ class RezepteDetailViewController: UIViewController, UITableViewDelegate, UITabl
                 self.zutatenTableView.reloadData()
                 
                 self.rezeptDescriptionLabel.frame.origin.y = (self.rezeptImageView.frame.height + self.zutatenTableView.frame.height + 10)
+                self.scrollView.contentSize.height = self.rezeptImageView.frame.height + self.zutatenTableView.frame.height + self.rezeptDescriptionLabel.frame.height + 40
             }) { (error) in
                 print(error.localizedDescription)
             }
