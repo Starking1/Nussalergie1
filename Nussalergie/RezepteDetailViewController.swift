@@ -19,45 +19,60 @@ class RezepteDetailViewController: UIViewController, UITableViewDelegate, UITabl
     let scrollView: UIScrollView = UIScrollView()
     let zutatenTableView: UITableView = UITableView()
     
+    var zutatenArray = [RezeptZutat]()
     
-    var zutatenArray = [RezeptZutat(name: "Ei", menge: 2, einheit: "Stk")]
+    var zubereitungsDict = [String : AnyObject]()
     
-    //let zubereitungsRef = FIRDatabase.database().reference().child("Zubereitung").child("0")
-    let zutatenRef =  FIRDatabase.database().reference().child("Zutaten").child("0")
+    let zutatenRef =  FIRDatabase.database().reference().child("Zutaten")
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let zubereitungsRef =  FIRDatabase.database().reference().child("Zubereitung").child("\(rezeptID)")
+        
         zutatenTableView.delegate = self
         zutatenTableView.dataSource = self
         zutatenTableView.registerNib(UINib(nibName: "ZutatenCell", bundle: nil), forCellReuseIdentifier: "zutatenCell")
-        
-        zutatenRef.observeSingleEventOfType(.Value, withBlock: { (snapshot) in
-            print(snapshot)
-        }){ (error) in
-            print(error.localizedDescription)
-        }
         
         //NavigationBarTitel Setzen
         self.navigationItem.title = rezeptNavigationTitle
         
         //ScrollView initialisieren
         scrollView.frame = CGRectMake(0, 0, view.frame.width, view.frame.height)
-        scrollView.contentSize = CGSize(width: view.frame.width, height: 2000)
+        scrollView.contentSize = CGSize(width: view.frame.width, height: 800)
             
         //Elemente für ScrollView initialisieren
         rezeptImageView.frame = CGRectMake(5, 5,view.frame.width-10,view.frame.width-10)
         //rezeptImageView.backgroundColor = UIColor.blackColor()
         
-        rezeptDescriptionLabel.frame = CGRectMake(5, rezeptImageView.frame.height + 20, view.frame.width-10, 500)
-        rezeptDescriptionLabel.text = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius adipisci, sed libero. Iste asperiores suscipit, consequatur debitis animi impedit numquam facilis iusto porro labore dolorem, maxime magni incidunt. Delectus, est! Totam at eius excepturi deleniti sed, error repellat itaque omnis maiores tempora ratione dolor velit minus porro aspernatur repudiandae labore quas adipisci esse, nulla tempore voluptatibus cupiditate. Ab provident, atque. Possimus deserunt nisi perferendis, consequuntur odio et aperiam, est, dicta dolor itaque sunt laborum, magni qui optio illum dolore laudantium similique harum. Eveniet quis, libero eligendi delectus repellendus repudiandae ipsum? Vel nam odio dolorem, voluptas sequi minus quo tempore, animi est quia earum maxime. Reiciendis quae repellat, modi non, veniam natus soluta at optio vitae in excepturi minima eveniet dolor."
-        rezeptDescriptionLabel.numberOfLines = 40
-        rezeptDescriptionLabel.textColor = UIColor.darkGrayColor()
-        rezeptDescriptionLabel.backgroundColor = UIColor(red: 0.9021, green: 0.8982, blue: 0.7637, alpha: 1.0)
         
+        zubereitungsRef.observeSingleEventOfType(.Value, withBlock: { (snapshot) in
+            self.zubereitungsDict = snapshot.value as! [String : AnyObject]
+            self.rezeptDescriptionLabel.text = self.zubereitungsDict["text"] as? String
+            
+            
+            self.zutatenTableView.frame = CGRectMake(5, self.rezeptImageView.frame.height, self.view.frame.width-10, 0)
+            self.zutatenTableView.backgroundColor = UIColor.blueColor()
+            
+            
+            
+            self.rezeptDescriptionLabel.frame = CGRectMake(5, self.rezeptImageView.frame.height + self.zutatenTableView.frame.height + 20, self.view.frame.width-10, 500)
+            self.rezeptDescriptionLabel.numberOfLines = 0
+            self.rezeptDescriptionLabel.lineBreakMode = .ByWordWrapping
+            self.rezeptDescriptionLabel.sizeToFit()
+            self.rezeptDescriptionLabel.frame.size.width = self.view.frame.width-10
+            self.rezeptDescriptionLabel.textColor = UIColor.darkGrayColor()
+            self.rezeptDescriptionLabel.backgroundColor = UIColor(red: 0.9021, green: 0.8982, blue: 0.7637, alpha: 1.0)
+            
+            
+            self.populateZutatenTableView(self.zubereitungsDict)
+            
+            
+        }){ (error) in
+            print(error.localizedDescription)
+        }
         
-        zutatenTableView.frame = CGRectMake(5, rezeptImageView.frame.height + rezeptDescriptionLabel.frame.height + 50, view.frame.width-10, 200)
-        zutatenTableView.backgroundColor = UIColor.blueColor()
         
         //Alle Views anzeigen
         scrollView.addSubview(rezeptImageView)
@@ -77,18 +92,54 @@ class RezepteDetailViewController: UIViewController, UITableViewDelegate, UITabl
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
-        
+        return zutatenArray.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("zutatenCell", forIndexPath: indexPath)
         
+        let zutat = zutatenArray[indexPath.row]
+        
+        if let zutatenCellNameLabel = cell.viewWithTag(1) as? UILabel {
+            zutatenCellNameLabel.text = zutat.name
+        }
+        if let zutatenCellMengeLabel = cell.viewWithTag(2) as? UILabel {
+            zutatenCellMengeLabel.text = String(zutat.menge)
+        }
+        if let zutatenCellEinheitLabel = cell.viewWithTag(3) as? UILabel {
+            zutatenCellEinheitLabel.text = zutat.einheit
+        }
+        
+        
         cell.selectionStyle = .None
         
         return cell
     }
-
+    
+    func populateZutatenTableView(zubereitungsDict: NSDictionary) {
+        
+        let zutatenDictArray = (zubereitungsDict["zutaten"] as! [NSDictionary])
+        
+        for i in 0..<zutatenDictArray.count{
+            let id = String(zutatenDictArray[i]["id"]!)
+            self.zutatenRef.child(id).observeEventType(FIRDataEventType.Value, withBlock: { (snapshot) in
+                let zutat = snapshot.value as! [String: String]
+                
+                self.zutatenArray.append(RezeptZutat(name: zutat["name"]!, menge: (zutatenDictArray[i]["menge"] as! Int), einheit: zutat["einheit"]!))
+                self.zutatenTableView.frame.size.height = CGFloat(self.zutatenArray.count * 44)
+                self.zutatenTableView.reloadData()
+                
+                self.rezeptDescriptionLabel.frame.origin.y = (self.rezeptImageView.frame.height + self.zutatenTableView.frame.height + 10)
+            }) { (error) in
+                print(error.localizedDescription)
+            }
+        }
+        
+        
+    
+//
+    }
+    
     /*
     // MARK: - Navigation
 
