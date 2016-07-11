@@ -70,7 +70,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Rezepte" id="RhH-hO-X2N">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="Z2D-OE-Rde"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="Z2D-OE-Rde">
+                            <connections>
+                                <segue destination="NiB-fM-eZL" kind="show" id="4bj-C3-fQ0"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8aF-ee-Rq0" userLabel="First Responder" sceneMemberID="firstResponder"/>
