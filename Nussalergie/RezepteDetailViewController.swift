@@ -139,10 +139,6 @@ class RezepteDetailViewController: UIViewController, UITableViewDelegate, UITabl
                 print(error.localizedDescription)
             }
         }
-        
-        
-    
-//
     }
     
     /*

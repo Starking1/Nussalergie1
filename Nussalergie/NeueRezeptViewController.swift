@@ -38,15 +38,22 @@ class NeueRezeptViewController: UIViewController {
         
         rezeptNameLabel.frame = CGRectMake(20, 20, 100, 30)
         rezeptNameLabel.text = "Name"
+        
         rezeptNameTextfield.frame = CGRectMake(20, 55, 100, 30)
+        
         rezeptDauerLabel.frame = CGRectMake(20, 100, 100, 30)
         rezeptDauerLabel.text = "Dauer"
+        
         rezeptDauerTextfield.frame = CGRectMake(20, 135, 100, 30)
+        
         rezeptZubereitungLabel.frame = CGRectMake(20, 180, 100, 30)
         rezeptZubereitungLabel.text = "Zubereitung"
+        
         rezeptZubereitungstext.frame = CGRectMake(20, 205,view.frame.width - 40 , ZubereitungsTextfieldheight)
+        
         rezeptZutatenLabel.frame = CGRectMake(20, 210 + ZubereitungsTextfieldheight + 10, 100, 30)
         rezeptZutatenLabel.text = "Zutaten"
+        
         rezeptZutatenButton.frame = CGRectMake(view.frame.width - 120, 210 + ZubereitungsTextfieldheight + 10, 100, 30)
 
         scrollView.addSubview(rezeptImageView)
