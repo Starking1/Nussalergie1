@@ -70,16 +70,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Rezepte" id="RhH-hO-X2N">
-                        <barButtonItem key="rightBarButtonItem" id="Z2D-OE-Rde">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="xWk-W6-sJV" userLabel="newRezept">
-                                <rect key="frame" x="447" y="7" width="133" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="neues Rezept"/>
-                                <connections>
-                                    <segue destination="NiB-fM-eZL" kind="show" id="3UK-DW-AUp"/>
-                                </connections>
-                            </button>
-                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="Z2D-OE-Rde"/>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8aF-ee-Rq0" userLabel="First Responder" sceneMemberID="firstResponder"/>
