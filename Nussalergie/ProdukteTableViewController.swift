@@ -77,7 +77,7 @@ override func didReceiveMemoryWarning() {
             produktCellTitleLabel.text = produkt.name
         }
         if let produktCellPriceLabel = cell.viewWithTag(3) as? UILabel {
-            produktCellPriceLabel.text = "Kostet: \(produkt.preis) CHF"
+            produktCellPriceLabel.text = "\(produkt.preis) CHF"
         }
         if let produktCellAmountLabel = cell.viewWithTag(4) as? UILabel {
             produktCellAmountLabel.text = "\(produkt.menge) " + produkt.einheit

@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import FontAwesome
 
 class RezepteDetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
@@ -35,8 +36,11 @@ class RezepteDetailViewController: UIViewController, UITableViewDelegate, UITabl
         zutatenTableView.dataSource = self
         zutatenTableView.registerNib(UINib(nibName: "ZutatenCell", bundle: nil), forCellReuseIdentifier: "zutatenCell")
         
-        //NavigationBarTitel Setzen
+        //NavigationBar Setzen
+        let button = UIBarButtonItem()
+        button.image = UIImage.fontAwesomeIconWithName(.Archive, textColor: UIColor.blackColor(), size: CGSize(width: 30, height: 30))
         self.navigationItem.title = rezeptNavigationTitle
+        self.navigationItem.rightBarButtonItem = button
         
         //ScrollView initialisieren
         scrollView.frame = CGRectMake(0, 0, view.frame.width, view.frame.height)

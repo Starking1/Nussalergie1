@@ -195,7 +195,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" tag="3" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kosten" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qeb-3s-5ak">
-                                            <rect key="frame" x="359" y="13" width="207" height="28"/>
+                                            <rect key="frame" x="385" y="17" width="207" height="28"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="207" id="Z7T-Gf-AFE"/>
                                             </constraints>
@@ -205,11 +205,11 @@
                                         </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstAttribute="trailingMargin" secondItem="Qeb-3s-5ak" secondAttribute="trailing" constant="26" id="DMF-RG-wBy"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="Qeb-3s-5ak" secondAttribute="trailing" id="DMF-RG-wBy"/>
                                         <constraint firstItem="Xwz-pe-6sn" firstAttribute="top" secondItem="1A3-Q3-VNl" secondAttribute="top" id="GWb-Cj-7mo"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="Qeb-3s-5ak" secondAttribute="bottom" constant="20.5" id="Neq-Zx-diH"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="Qeb-3s-5ak" secondAttribute="bottom" constant="16" id="Neq-Zx-diH"/>
                                         <constraint firstItem="xQJ-HU-LFP" firstAttribute="top" secondItem="1A3-Q3-VNl" secondAttribute="topMargin" id="Q4W-rY-cI7"/>
-                                        <constraint firstItem="Qeb-3s-5ak" firstAttribute="top" secondItem="1A3-Q3-VNl" secondAttribute="topMargin" constant="5" id="RkD-M4-PWs"/>
+                                        <constraint firstItem="Qeb-3s-5ak" firstAttribute="top" secondItem="1A3-Q3-VNl" secondAttribute="topMargin" constant="9" id="RkD-M4-PWs"/>
                                         <constraint firstItem="xQJ-HU-LFP" firstAttribute="leading" secondItem="Xwz-pe-6sn" secondAttribute="trailing" constant="8" symbolic="YES" id="Rv3-RQ-xnn"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="Xwz-pe-6sn" secondAttribute="bottom" constant="-0.5" id="cdh-4q-gKa"/>
                                         <constraint firstItem="xQJ-HU-LFP" firstAttribute="leading" secondItem="tce-Nj-xCo" secondAttribute="leading" id="dmC-NY-aLR"/>

@@ -117,9 +117,10 @@
 			children = (
 				26F781721D297F8D00DFEF5E /* AppDelegate.swift */,
 				26F781741D297F8D00DFEF5E /* ViewController.swift */,
-				8172EC271D2C0EB700B1A4E4 /* Rezepte */,
 				8172EC281D2C0F5100B1A4E4 /* TabBarViewController.swift */,
+				8172EC271D2C0EB700B1A4E4 /* Rezepte */,
 				26391F2E1D2D468000A23140 /* Produkte */,
+				819F39151D340A5700FA319D /* Einkaufsliste */,
 				26F781761D297F8D00DFEF5E /* Main.storyboard */,
 				26F7817B1D297F8D00DFEF5E /* LaunchScreen.storyboard */,
 				26F781791D297F8D00DFEF5E /* Assets.xcassets */,
@@ -159,6 +160,13 @@
 				818A81511D2EBA3500E31D50 /* RezeptZutat.swift */,
 			);
 			name = RezeptZutatenTableView;
+			sourceTree = "<group>";
+		};
+		819F39151D340A5700FA319D /* Einkaufsliste */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Einkaufsliste;
 			sourceTree = "<group>";
 		};
 		C2E231E19F5AE096795F7F6F /* Pods */ = {
