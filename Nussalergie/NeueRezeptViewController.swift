@@ -55,8 +55,8 @@ class NeueRezeptViewController: UIViewController {
         rezeptZutatenLabel.text = "Zutaten"
         
         rezeptZutatenButton.frame = CGRectMake(view.frame.width - 120, 210 + ZubereitungsTextfieldheight + 10, 100, 30)
-        rezeptZutatenButton.titleLabel?.text = "Neue Zutat"
-        rezeptZutatenButton.backgroundColor = UIColor.blueColor()
+        rezeptZutatenButton.setTitle("Neue Zutat", forState: .Normal)
+        rezeptZutatenButton.setTitleColor(UIColor.blueColor(), forState: .Normal)
 
         scrollView.addSubview(rezeptImageView)
         scrollView.addSubview(rezeptNameLabel)
