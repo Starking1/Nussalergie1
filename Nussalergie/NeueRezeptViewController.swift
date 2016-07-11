@@ -19,7 +19,7 @@ class NeueRezeptViewController: UIViewController {
     let rezeptDauerLabel: UILabel = UILabel()
     let rezeptDauerTextfield: UITextField = UITextField()
     let rezeptZubereitungLabel: UILabel = UILabel()
-    let rezeptZubereitungstext: UITextField = UITextField()
+    let rezeptZubereitungsTextfield: UITextField = UITextField()
     let ZubereitungsTextfieldheight: CGFloat = 200;
     let rezeptZutatenLabel:UILabel = UILabel()
     let rezeptZutatenButton: UIButton = UIButton()
@@ -40,16 +40,19 @@ class NeueRezeptViewController: UIViewController {
         rezeptNameLabel.text = "Name"
         
         rezeptNameTextfield.frame = CGRectMake(20, 55, 100, 30)
+        rezeptNameTextfield.backgroundColor = UIColor.greenColor()
         
         rezeptDauerLabel.frame = CGRectMake(20, 100, 100, 30)
         rezeptDauerLabel.text = "Dauer"
         
         rezeptDauerTextfield.frame = CGRectMake(20, 135, 100, 30)
+        rezeptDauerTextfield.backgroundColor = UIColor.greenColor()
         
         rezeptZubereitungLabel.frame = CGRectMake(20, 180, 100, 30)
         rezeptZubereitungLabel.text = "Zubereitung"
         
-        rezeptZubereitungstext.frame = CGRectMake(20, 205,view.frame.width - 40 , ZubereitungsTextfieldheight)
+        rezeptZubereitungsTextfield.frame = CGRectMake(20, 205,view.frame.width - 40 , ZubereitungsTextfieldheight)
+        rezeptZubereitungsTextfield.backgroundColor = UIColor.greenColor()
         
         rezeptZutatenLabel.frame = CGRectMake(20, 210 + ZubereitungsTextfieldheight + 10, 100, 30)
         rezeptZutatenLabel.text = "Zutaten"
@@ -64,7 +67,7 @@ class NeueRezeptViewController: UIViewController {
         scrollView.addSubview(rezeptDauerLabel)
         scrollView.addSubview(rezeptDauerTextfield)
         scrollView.addSubview(rezeptZubereitungLabel)
-        scrollView.addSubview(rezeptZubereitungstext)
+        scrollView.addSubview(rezeptZubereitungsTextfield)
         scrollView.addSubview(rezeptZutatenLabel)
         scrollView.addSubview(rezeptZutatenButton)
         
