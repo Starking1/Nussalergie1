@@ -10,10 +10,10 @@ import UIKit
 import Firebase
 
 class EinkaufTableViewController: UITableViewController {
-
     
-    var rezeptZutatToTake = [Einkaufszutat]()
-
+    
+    var einkaufListenElementeArray = [Einkaufszutat]()
+    
     var alreadyTaken: Int = 0
     
     var ownindex: Int = 0;
@@ -21,8 +21,8 @@ class EinkaufTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        for  i in 0 ... rezeptZutatToTake.count{
-            if (rezeptZutatToTake[i].taken){
+        for  i in 0 ..< einkaufListenElementeArray.count{
+            if (einkaufListenElementeArray[i].taken){
                 
                 alreadyTaken += 1
             }
@@ -37,32 +37,31 @@ class EinkaufTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if(section == 0){
-        return (rezeptZutatToTake.count - alreadyTaken)
+            return (einkaufListenElementeArray.count - alreadyTaken)
         }
-         else {
+        else {
             return alreadyTaken
-        
+            
         }
         
     }
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        
-        
         let cell = tableView.dequeueReusableCellWithIdentifier("Einkaufszutatcell", forIndexPath: indexPath)
+        
+        
         if indexPath.section == 0{
-        let einkaufZutat = rezeptZutatToTake[indexPath.row] as Einkaufszutat
+            let einkaufZutat = einkaufListenElementeArray[indexPath.row] as Einkaufszutat
             if !einkaufZutat.taken {
-        if let ZutatCellTitleLabel = cell.viewWithTag(1) as? UILabel {
-            ZutatCellTitleLabel.text = einkaufZutat.zutat.name
-        }
-        if let ZutatCellamountLabel = cell.viewWithTag(2) as? UILabel {
-            ZutatCellamountLabel.text = "\(einkaufZutat.zutat.menge)  \(einkaufZutat.zutat.einheit)"
-        }
+                if let ZutatCellTitleLabel = cell.viewWithTag(1) as? UILabel {
+                    ZutatCellTitleLabel.text = einkaufZutat.zutat.name
+                }
+                if let ZutatCellamountLabel = cell.viewWithTag(2) as? UILabel {
+                    ZutatCellamountLabel.text = "\(einkaufZutat.zutat.menge)  \(einkaufZutat.zutat.einheit)"
+                }
             }
-            
         }
         else {
-            let einkaufZutat = rezeptZutatToTake[indexPath.row] as Einkaufszutat
+            let einkaufZutat = einkaufListenElementeArray[indexPath.row] as Einkaufszutat
             if einkaufZutat.taken {
                 if let ZutatCellTitleLabel = cell.viewWithTag(1) as? UILabel {
                     ZutatCellTitleLabel.text = einkaufZutat.zutat.name
@@ -71,15 +70,11 @@ class EinkaufTableViewController: UITableViewController {
                     ZutatCellamountLabel.text = "\(einkaufZutat.zutat.menge)  \(einkaufZutat.zutat.einheit)"
                 }
             }
-            
-            
-            
         }
         
         return cell
     }
     
-
     
     
 }
