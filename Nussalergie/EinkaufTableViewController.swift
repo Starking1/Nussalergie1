@@ -57,23 +57,22 @@ class EinkaufTableViewController: UITableViewController {
                 }
                 if let ZutatCellamountLabel = cell.viewWithTag(2) as? UILabel {
                     ZutatCellamountLabel.text = "\(einkaufZutat.zutat.menge)  \(einkaufZutat.zutat.einheit)"
-            }
-                
-        } else {
-            let einkaufZutat = einkaufListenElementeArray[indexPath.row] as Einkaufszutat
-            if einkaufZutat.taken {
-                if let ZutatCellTitleLabel = cell.viewWithTag(1) as? UILabel {
-                    ZutatCellTitleLabel.text = einkaufZutat.zutat.name
                 }
-                if let ZutatCellamountLabel = cell.viewWithTag(2) as? UILabel {
-                    ZutatCellamountLabel.text = "\(einkaufZutat.zutat.menge)  \(einkaufZutat.zutat.einheit)"
+                
+            } else {
+                let einkaufZutat = einkaufListenElementeArray[indexPath.row] as Einkaufszutat
+                if einkaufZutat.taken {
+                    if let ZutatCellTitleLabel = cell.viewWithTag(1) as? UILabel {
+                        ZutatCellTitleLabel.text = einkaufZutat.zutat.name
+                    }
+                    if let ZutatCellamountLabel = cell.viewWithTag(2) as? UILabel {
+                        ZutatCellamountLabel.text = "\(einkaufZutat.zutat.menge)  \(einkaufZutat.zutat.einheit)"
+                    }
                 }
             }
         }
-        
         return cell
     }
-    
     
     
 }
