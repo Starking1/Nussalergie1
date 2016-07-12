@@ -9,11 +9,11 @@
 import Foundation
 
 struct Einkaufszutat {
-    let Zutat: RezeptZutat
+    let zutat: RezeptZutat
     let taken: Bool
     
-    init(Zutat: RezeptZutat, taken: Bool){
-        self.Zutat = Zutat
+    init(zutat: RezeptZutat, taken: Bool){
+        self.zutat = zutat
         self.taken = taken
       
     }
