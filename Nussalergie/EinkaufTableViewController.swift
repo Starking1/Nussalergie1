@@ -16,7 +16,6 @@ class EinkaufTableViewController: UITableViewController {
     
     var alreadyTaken: Int = 0
     
-    var ownindex: Int = 0;
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,6 +49,7 @@ class EinkaufTableViewController: UITableViewController {
         
         
         if indexPath.section == 0{
+            
             let einkaufZutat = einkaufListenElementeArray[indexPath.row] as Einkaufszutat
             if !einkaufZutat.taken {
                 if let ZutatCellTitleLabel = cell.viewWithTag(1) as? UILabel {
@@ -57,10 +57,9 @@ class EinkaufTableViewController: UITableViewController {
                 }
                 if let ZutatCellamountLabel = cell.viewWithTag(2) as? UILabel {
                     ZutatCellamountLabel.text = "\(einkaufZutat.zutat.menge)  \(einkaufZutat.zutat.einheit)"
-                }
             }
-        }
-        else {
+                
+        } else {
             let einkaufZutat = einkaufListenElementeArray[indexPath.row] as Einkaufszutat
             if einkaufZutat.taken {
                 if let ZutatCellTitleLabel = cell.viewWithTag(1) as? UILabel {
