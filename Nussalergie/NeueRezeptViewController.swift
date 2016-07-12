@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 
-class NeueRezeptViewController: UIViewController {
+class NeueRezeptViewController: UIViewController, UITextFieldDelegate {
     
     let rezeptNavigationTitle: String = "Neues Rezept"
     let rezeptImageView: UIImageView = UIImageView()
@@ -26,10 +26,12 @@ class NeueRezeptViewController: UIViewController {
     var rezeptID: Int = Int()
     let scrollView: UIScrollView = UIScrollView()
 
+    let rezeptRef = FIRDatabase.database().reference().child("Rezepte")
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-         self.navigationItem.title = "Neues Rezept"
+        self.navigationItem.title = "Neues Rezept"
         scrollView.frame = CGRectMake(0, 0, view.frame.width, view.frame.height)
         scrollView.contentSize = CGSize(width: view.frame.width, height: 2000)
         
@@ -53,7 +55,8 @@ class NeueRezeptViewController: UIViewController {
         
         rezeptZubereitungsTextfield.frame = CGRectMake(20, 205,view.frame.width - 40 , ZubereitungsTextfieldheight)
         rezeptZubereitungsTextfield.backgroundColor = UIColor.greenColor()
-        
+        rezeptZubereitungsTextfield.contentVerticalAlignment = UIControlContentVerticalAlignment.Top
+        rezeptZubereitungsTextfield.delegate = self
         
         rezeptZutatenLabel.frame = CGRectMake(20, 210 + ZubereitungsTextfieldheight + 10, 100, 30)
         rezeptZutatenLabel.text = "Zutaten"
@@ -74,12 +77,18 @@ class NeueRezeptViewController: UIViewController {
         scrollView.addSubview(rezeptZutatenButton)
         
         view.addSubview(scrollView)
+        
     }
     
     func pressedPostButton (sender: UIButton!){
         print(rezeptNameTextfield.text)
         print(rezeptDauerTextfield.text)
         print(rezeptZubereitungsTextfield.text)
+        self.rezeptRef.childByAutoId().setValue(["username": "test"])
+    }
+    
+    func textFieldDidBeginEditing(textField: UITextField) {
+        
     }
     
 }

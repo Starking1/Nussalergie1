@@ -77,7 +77,6 @@ class RezepteTableViewController: UITableViewController {
             rezeptCellTimeLabel.text = "Zeit: \(rezept.zeit)min"
         }
         
-        
         return cell
     }
 
