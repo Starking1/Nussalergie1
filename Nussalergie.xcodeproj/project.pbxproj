@@ -142,10 +142,10 @@
 		8172EC271D2C0EB700B1A4E4 /* Rezepte */ = {
 			isa = PBXGroup;
 			children = (
-				26BA626B1D2F9E16005D725A /* NeueRezeptViewController.swift */,
 				8172EC091D2BF86100B1A4E4 /* RezepteTableViewController.swift */,
 				81D47D8C1D2D4413005C767A /* RezepteDetailViewController.swift */,
 				818A81571D2EBC6F00E31D50 /* RezeptZutatenTableView */,
+				26BA626B1D2F9E16005D725A /* NeueRezeptViewController.swift */,
 				8172EC1C1D2C0A1600B1A4E4 /* RezepteNavigationController.swift */,
 				8172EC101D2C01F800B1A4E4 /* Rezept.swift */,
 			);

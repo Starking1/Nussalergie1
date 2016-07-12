@@ -54,12 +54,14 @@ class NeueRezeptViewController: UIViewController {
         rezeptZubereitungsTextfield.frame = CGRectMake(20, 205,view.frame.width - 40 , ZubereitungsTextfieldheight)
         rezeptZubereitungsTextfield.backgroundColor = UIColor.greenColor()
         
+        
         rezeptZutatenLabel.frame = CGRectMake(20, 210 + ZubereitungsTextfieldheight + 10, 100, 30)
         rezeptZutatenLabel.text = "Zutaten"
         
         rezeptZutatenButton.frame = CGRectMake(view.frame.width - 120, 210 + ZubereitungsTextfieldheight + 10, 100, 30)
-        rezeptZutatenButton.setTitle("Neue Zutat", forState: .Normal)
+        rezeptZutatenButton.setTitle("Posten", forState: .Normal)
         rezeptZutatenButton.setTitleColor(UIColor.blueColor(), forState: .Normal)
+        rezeptZutatenButton.addTarget(self, action: #selector(pressedPostButton), forControlEvents: .TouchUpInside)
 
         scrollView.addSubview(rezeptImageView)
         scrollView.addSubview(rezeptNameLabel)
@@ -72,6 +74,12 @@ class NeueRezeptViewController: UIViewController {
         scrollView.addSubview(rezeptZutatenButton)
         
         view.addSubview(scrollView)
+    }
+    
+    func pressedPostButton (sender: UIButton!){
+        print(rezeptNameTextfield.text)
+        print(rezeptDauerTextfield.text)
+        print(rezeptZubereitungsTextfield.text)
     }
     
 }
