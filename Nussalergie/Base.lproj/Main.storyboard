@@ -19,7 +19,7 @@
                                 <rect key="frame" x="0.0" y="92" width="600" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dzI-TW-OdH" id="QdQ-xI-Y9a">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="79"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="79.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hCW-V7-gyF">
@@ -117,24 +117,65 @@
             </objects>
             <point key="canvasLocation" x="2476" y="1297"/>
         </scene>
-        <!--Einkaufsliste-->
-        <scene sceneID="57m-8B-huU">
+        <!--Einkaufszutaten-->
+        <scene sceneID="DCK-W6-nOF">
             <objects>
-                <tableViewController id="9AC-ft-SLC" userLabel="Einkaufsliste" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="20" sectionHeaderHeight="28" sectionFooterHeight="28" id="PrV-qE-Vqi">
+                <tableViewController id="X1p-Zg-oA6" userLabel="Einkaufszutaten" customClass="EinkaufTableViewController" customModule="Nussalergie" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelectionDuringEditing="YES" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="rb6-gI-hu0">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Einkaufszutatcell" id="R62-E0-zy5">
+                                <rect key="frame" x="0.0" y="92" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="R62-E0-zy5" id="hIN-q8-OOR">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Anzahl" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i4L-FK-Zmb">
+                                            <rect key="frame" x="500" y="8" width="52" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Zutat" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BKS-Fc-iBT">
+                                            <rect key="frame" x="23" y="8" width="41" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
                         <connections>
-                            <outlet property="dataSource" destination="9AC-ft-SLC" id="AyY-gn-UYS"/>
-                            <outlet property="delegate" destination="9AC-ft-SLC" id="7CQ-lw-zjB"/>
+                            <outlet property="dataSource" destination="X1p-Zg-oA6" id="mlZ-mF-wZH"/>
+                            <outlet property="delegate" destination="X1p-Zg-oA6" id="YBH-4i-JQ6"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Einkaufsliste" id="0zh-T8-K64" userLabel="Einkaufsliste"/>
+                    <navigationItem key="navigationItem" title="Root View Controller" id="IGd-aK-e4O"/>
                 </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="KgM-Bc-9Mo" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VKl-ol-8cT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="877" y="2157"/>
+            <point key="canvasLocation" x="1713" y="2094"/>
+        </scene>
+        <!--Einkaufsliste-->
+        <scene sceneID="Qw0-tl-246">
+            <objects>
+                <navigationController id="Z6z-Se-45O" userLabel="Einkaufsliste" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Einkaufsliste" id="h0j-KR-FK9"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="OMc-JK-aad">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="X1p-Zg-oA6" kind="relationship" relationship="rootViewController" id="wMm-ur-IBw"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="v12-Nv-Bbw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="877" y="2101"/>
         </scene>
         <!--Tab Bar View Controller-->
         <scene sceneID="MIY-20-mPh">
@@ -147,13 +188,13 @@
                     </tabBar>
                     <connections>
                         <segue destination="X4n-rE-aeq" kind="relationship" relationship="viewControllers" id="7Pk-fu-wWt"/>
-                        <segue destination="9AC-ft-SLC" kind="relationship" relationship="viewControllers" id="XFf-ks-AXY"/>
                         <segue destination="lwM-Ny-Dxt" kind="relationship" relationship="viewControllers" id="fsr-qn-UAn"/>
+                        <segue destination="Z6z-Se-45O" kind="relationship" relationship="viewControllers" id="P0f-jS-c5j"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="akU-ez-rNh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-206" y="1753"/>
+            <point key="canvasLocation" x="-222" y="1669"/>
         </scene>
         <!--Produkte-->
         <scene sceneID="Pxb-7n-WLk">
@@ -168,7 +209,7 @@
                                 <rect key="frame" x="0.0" y="92" width="600" height="70"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="tdx-Dd-X0q" id="1A3-Q3-VNl">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="69"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="69.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Xwz-pe-6sn">
