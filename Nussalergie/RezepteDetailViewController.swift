@@ -15,7 +15,7 @@ class RezepteDetailViewController: UIViewController, UITableViewDelegate, UITabl
     let rezeptImageView: UIImageView = UIImageView()
     var rezeptNavigationTitle: String = String()
     let rezeptDescriptionLabel: UILabel = UILabel()
-    var rezeptID: Int = Int()
+    var rezeptID: String = String()
     
     let scrollView: UIScrollView = UIScrollView()
     let zutatenTableView: UITableView = UITableView()
@@ -34,6 +34,7 @@ class RezepteDetailViewController: UIViewController, UITableViewDelegate, UITabl
         
         zutatenTableView.delegate = self
         zutatenTableView.dataSource = self
+        zutatenTableView.scrollEnabled = false
         zutatenTableView.registerNib(UINib(nibName: "ZutatenCell", bundle: nil), forCellReuseIdentifier: "zutatenCell")
         
         //NavigationBar Setzen

@@ -9,10 +9,11 @@
 import UIKit
 import Firebase
 
-class NeueRezeptViewController: UIViewController, UITextFieldDelegate {
+class NeueRezeptViewController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     let rezeptNavigationTitle: String = "Neues Rezept"
     let rezeptImageView: UIImageView = UIImageView()
+    let rezeptImageViewOverlayButton: UIButton = UIButton()
     let ImageViewwidth: CGFloat = 150;
     let rezeptNameLabel: UILabel = UILabel()
     let rezeptNameTextfield: UITextField = UITextField()
@@ -26,17 +27,27 @@ class NeueRezeptViewController: UIViewController, UITextFieldDelegate {
     var rezeptID: Int = Int()
     let scrollView: UIScrollView = UIScrollView()
 
-    let rezeptRef = FIRDatabase.database().reference().child("Rezepte")
+    let rootRef = FIRDatabase.database().reference()
+    let storageRef = FIRStorage.storage().reference()
+
+    var imagePicker: UIImagePickerController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.navigationItem.title = "Neues Rezept"
+        
+        
+        
         scrollView.frame = CGRectMake(0, 0, view.frame.width, view.frame.height)
         scrollView.contentSize = CGSize(width: view.frame.width, height: 2000)
         
         rezeptImageView.frame = CGRectMake(view.frame.width - ImageViewwidth - 20, 20 ,ImageViewwidth,ImageViewwidth)
-        rezeptImageView.backgroundColor = UIColor.blackColor()
+        rezeptImageView.backgroundColor = UIColor.lightGrayColor()
+        rezeptImageView.image = UIImage.fontAwesomeIconWithName(.Camera, textColor: UIColor.blackColor(), size: CGSize(width: 50, height: 50))
+        rezeptImageView.layer.zPosition = -1
+        rezeptImageViewOverlayButton.frame = rezeptImageView.frame
+        rezeptImageViewOverlayButton.addTarget(self, action: #selector(pressedTakePicture), forControlEvents: .TouchUpInside)
         
         rezeptNameLabel.frame = CGRectMake(20, 20, 100, 30)
         rezeptNameLabel.text = "Name"
@@ -67,6 +78,7 @@ class NeueRezeptViewController: UIViewController, UITextFieldDelegate {
         rezeptZutatenButton.addTarget(self, action: #selector(pressedPostButton), forControlEvents: .TouchUpInside)
 
         scrollView.addSubview(rezeptImageView)
+        scrollView.addSubview(rezeptImageViewOverlayButton)
         scrollView.addSubview(rezeptNameLabel)
         scrollView.addSubview(rezeptNameTextfield)
         scrollView.addSubview(rezeptDauerLabel)
@@ -78,22 +90,66 @@ class NeueRezeptViewController: UIViewController, UITextFieldDelegate {
         
         view.addSubview(scrollView)
         
+        
+        
     }
     
     func pressedPostButton (sender: UIButton!){
-        print(rezeptNameTextfield.text)
-        print(rezeptDauerTextfield.text)
-        print(rezeptZubereitungsTextfield.text)
-
-        let key = rezeptRef.childByAutoId().key
+        //Generate Key For Storage
+        let key = self.rootRef.childByAutoId().key
+    
         
-        let post = ["bild": "burger.jpg",
-                    "name": "NeuerBurger",
-                    "zeit": 3]
-        let childUpdates = ["\(key)": post]
-        rezeptRef.updateChildValues(childUpdates)
+        //Picture Upload First
+        // Data in memory
+        let data: NSData = UIImageJPEGRepresentation(rezeptImageView.image!, 0.8)!;
         
+        // Create a reference to the file you want to upload
+        let riversRef = storageRef.child("images/\(key).jpg")
         
+        //Add metadata
+        let metadata = FIRStorageMetadata()
+        metadata.contentType = "image/jpeg"
+        
+        // Upload the file to the path "images/rivers.jpg"
+        riversRef.putData(data, metadata: metadata) { metadata, error in
+            if (error != nil) {
+                // Uh-oh, an error occurred!
+            } else {
+                // Metadata contains file metadata such as size, content-type, and download URL.
+                //let downloadURL = metadata!.downloadURL
+                // This can be stored in the Firebase Realtime Database
+                // It can also be used by image loading libraries like SDWebImage
+                
+                let post = ["bild": "\(key).jpg",
+                            "name": self.rezeptNameTextfield.text!,
+                            "zeit": 30]
+                
+                let zubereitung = ["text" : self.rezeptZubereitungsTextfield.text!,
+                                   "zutaten" : [["id" : 4,
+                                    "menge" : 250],
+                                    ["id": 5,
+                                        "menge": 500]]]
+                
+                let childUpdates = ["/Rezepte/\(key)": post,
+                                    "/Zubereitung/\(key)": zubereitung]
+                self.rootRef.updateChildValues(childUpdates)
+            }
+        }
+    }
+    
+    func pressedTakePicture (sender: UIButton!){
+        imagePicker = UIImagePickerController()
+        imagePicker.delegate = self
+        imagePicker.sourceType = .Camera
+        imagePicker.allowsEditing = true
+        
+        presentViewController(imagePicker, animated: true, completion: nil)
+    }
+    
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+        imagePicker.dismissViewControllerAnimated(true, completion: nil)
+        rezeptImageView.image = info[UIImagePickerControllerEditedImage] as? UIImage
+        rezeptImageView.contentMode = .ScaleAspectFit
     }
     
     func textFieldDidBeginEditing(textField: UITextField) {
