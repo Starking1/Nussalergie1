@@ -48,6 +48,7 @@ class EinkaufTableViewController: UITableViewController {
                     ZutatCellTitleLabel.text = einkaufZutat.name
                 }
                 if let ZutatCellamountLabel = cell.viewWithTag(2) as? UILabel {
+
                     ZutatCellamountLabel.text = "\(einkaufZutat.menge)  \(einkaufZutat.einheit)"
             }
                 
@@ -59,13 +60,11 @@ class EinkaufTableViewController: UITableViewController {
                 }
                 if let ZutatCellamountLabel = cell.viewWithTag(2) as? UILabel {
                     ZutatCellamountLabel.text = "\(einkaufZutat.menge)  \(einkaufZutat.einheit)"
-                }
+            }
             
         }
-        
         return cell
     }
-    
     
     
 }
