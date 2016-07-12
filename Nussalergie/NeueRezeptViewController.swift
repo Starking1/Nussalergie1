@@ -84,7 +84,14 @@ class NeueRezeptViewController: UIViewController, UITextFieldDelegate {
         print(rezeptNameTextfield.text)
         print(rezeptDauerTextfield.text)
         print(rezeptZubereitungsTextfield.text)
-        self.rezeptRef.childByAutoId().setValue(["username": "test"])
+
+        let key = rezeptRef.childByAutoId().key
+        
+        let post = ["bild": "burger.jpg",
+                    "name": "NeuerBurger",
+                    "zeit": 3]
+        let childUpdates = ["\(key)": post]
+        rezeptRef.updateChildValues(childUpdates)
     }
     
     func textFieldDidBeginEditing(textField: UITextField) {
