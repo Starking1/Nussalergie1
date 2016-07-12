@@ -37,6 +37,14 @@ class RezepteTableViewController: UITableViewController {
             }
         }
         
+        listenForChanges()
+        
+    }
+    
+    func listenForChanges (){
+    self.rootRef.child("Rezepte").observeEventType(.ChildAdded, withBlock: { (snapshot) -> Void in
+        print("changes happened")
+    })
     }
     
     override func viewDidAppear(animated: Bool) {

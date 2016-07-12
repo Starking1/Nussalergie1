@@ -92,6 +92,8 @@ class NeueRezeptViewController: UIViewController, UITextFieldDelegate {
                     "zeit": 3]
         let childUpdates = ["\(key)": post]
         rezeptRef.updateChildValues(childUpdates)
+        
+        
     }
     
     func textFieldDidBeginEditing(textField: UITextField) {
