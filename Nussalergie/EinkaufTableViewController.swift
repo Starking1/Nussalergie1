@@ -12,7 +12,7 @@ import Firebase
 class EinkaufTableViewController: UITableViewController {
     
     
-    var einkaufListenElementeArray = [RezeptZutat]()
+    var einkaufListenElementeArray = [RezeptZutat(name: "Eier", menge: 5, einheit: "Stk")]
     var einkaufListenTakenElementeArray = [RezeptZutat]()
     
     
@@ -39,10 +39,16 @@ class EinkaufTableViewController: UITableViewController {
         
     }
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        
         let cell = tableView.dequeueReusableCellWithIdentifier("Einkaufszutatcell", forIndexPath: indexPath)
+        
         if indexPath.section == 0{
             
             let einkaufZutat = einkaufListenElementeArray[indexPath.row] as RezeptZutat
+            
+            if let zutatenTakenButton = cell.viewWithTag(3) as? UIButton{
+                zutatenTakenButton.addTarget(self, action: #selector(pressedTakenButton), forControlEvents: .TouchUpInside)
+            }
             
                 if let ZutatCellTitleLabel = cell.viewWithTag(1) as? UILabel {
                     ZutatCellTitleLabel.text = einkaufZutat.name
@@ -66,5 +72,13 @@ class EinkaufTableViewController: UITableViewController {
         return cell
     }
     
+    
+    func pressedTakenButton (sender: UIButton){
+        var touchPoint: CGPoint = sender.convertPoint(CGPointZero, toView: EinkaufTableView)
+        // maintable --> replace your tableview name
+        var clickedButtonIndexPath: NSIndexPath = EinkaufTableView(forRowAtPoint: touchPoint)
+        NSLog("index path.section ==%ld", Int(clickedButtonIndexPath.section))
+        NSLog("index path.row ==%ld", Int(clickedButtonIndexPath.row))
+    }
     
 }
