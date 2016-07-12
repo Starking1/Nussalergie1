@@ -73,12 +73,11 @@ class EinkaufTableViewController: UITableViewController {
     }
     
     
-    func pressedTakenButton (sender: UIButton){
-        var touchPoint: CGPoint = sender.convertPoint(CGPointZero, toView: EinkaufTableView)
-        // maintable --> replace your tableview name
-        var clickedButtonIndexPath: NSIndexPath = EinkaufTableView(forRowAtPoint: touchPoint)
-        NSLog("index path.section ==%ld", Int(clickedButtonIndexPath.section))
-        NSLog("index path.row ==%ld", Int(clickedButtonIndexPath.row))
+    func pressedTakenButton (sender: UIButton!){
+        let touchPoint: CGPoint = sender.convertPoint(CGPointZero, toView: tableView)
+        let clickedButtonIndexPath: NSIndexPath = tableView.indexPathForRowAtPoint(touchPoint)!
+        print(touchPoint)
+        print(clickedButtonIndexPath)
     }
     
 }

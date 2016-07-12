@@ -19,7 +19,7 @@
                                 <rect key="frame" x="0.0" y="92" width="600" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dzI-TW-OdH" id="QdQ-xI-Y9a">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="79.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="79"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hCW-V7-gyF">
@@ -130,31 +130,33 @@
                                 <rect key="frame" x="0.0" y="92" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="R62-E0-zy5" id="hIN-q8-OOR">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Anzahl" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i4L-FK-Zmb">
-                                            <rect key="frame" x="458" y="8" width="77" height="21"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Anzahl" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i4L-FK-Zmb">
+                                            <rect key="frame" x="488" y="11" width="52" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Zutat" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BKS-Fc-iBT">
-                                            <rect key="frame" x="23" y="8" width="41" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x21-Q8-l9t">
-                                            <rect key="frame" x="544" y="3" width="44" height="30"/>
+                                        <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x21-Q8-l9t">
+                                            <rect key="frame" x="548" y="7" width="44" height="30"/>
                                             <state key="normal" title="Check"/>
                                         </button>
+                                        <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Zutat" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BKS-Fc-iBT">
+                                            <rect key="frame" x="8" y="11" width="41" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstAttribute="trailingMargin" secondItem="i4L-FK-Zmb" secondAttribute="trailing" constant="40" id="FOz-lG-MMh"/>
+                                        <constraint firstItem="x21-Q8-l9t" firstAttribute="trailing" secondItem="hIN-q8-OOR" secondAttribute="trailingMargin" id="8dG-ia-Iyk"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="i4L-FK-Zmb" secondAttribute="trailing" constant="52" id="FOz-lG-MMh"/>
                                         <constraint firstItem="BKS-Fc-iBT" firstAttribute="baseline" secondItem="i4L-FK-Zmb" secondAttribute="baseline" id="bXC-QS-XWt"/>
-                                        <constraint firstItem="BKS-Fc-iBT" firstAttribute="top" secondItem="hIN-q8-OOR" secondAttribute="topMargin" id="etv-Ib-vkD"/>
-                                        <constraint firstItem="BKS-Fc-iBT" firstAttribute="leading" secondItem="hIN-q8-OOR" secondAttribute="leadingMargin" constant="15" id="xfR-XV-7Nm"/>
+                                        <constraint firstItem="BKS-Fc-iBT" firstAttribute="top" secondItem="hIN-q8-OOR" secondAttribute="topMargin" constant="3" id="etv-Ib-vkD"/>
+                                        <constraint firstItem="x21-Q8-l9t" firstAttribute="centerY" secondItem="hIN-q8-OOR" secondAttribute="centerY" id="qmH-gu-aTt"/>
+                                        <constraint firstItem="BKS-Fc-iBT" firstAttribute="leading" secondItem="hIN-q8-OOR" secondAttribute="leadingMargin" id="xfR-XV-7Nm"/>
                                     </constraints>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -219,7 +221,7 @@
                                 <rect key="frame" x="0.0" y="92" width="600" height="70"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="tdx-Dd-X0q" id="1A3-Q3-VNl">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="69.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="69"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Xwz-pe-6sn">
