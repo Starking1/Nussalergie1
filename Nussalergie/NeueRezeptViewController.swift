@@ -59,6 +59,7 @@ class NeueRezeptViewController: UIViewController, UITextFieldDelegate, UIImagePi
         rezeptDauerLabel.text = "Dauer"
         
         rezeptDauerTextfield.frame = CGRectMake(20, 135, 100, 30)
+        rezeptDauerTextfield.keyboardType = .NumberPad
         rezeptDauerTextfield.backgroundColor = UIColor.greenColor()
         
         rezeptZubereitungLabel.frame = CGRectMake(20, 180, 100, 30)
@@ -110,10 +111,10 @@ class NeueRezeptViewController: UIViewController, UITextFieldDelegate, UIImagePi
         let metadata = FIRStorageMetadata()
         metadata.contentType = "image/jpeg"
         
-        // Upload the file to the path "images/rivers.jpg"
+        // Upload the file to the path "images/*name*.jpg"
         riversRef.putData(data, metadata: metadata) { metadata, error in
             if (error != nil) {
-                // Uh-oh, an error occurred!
+                print(error?.localizedDescription)
             } else {
                 // Metadata contains file metadata such as size, content-type, and download URL.
                 //let downloadURL = metadata!.downloadURL
@@ -122,7 +123,7 @@ class NeueRezeptViewController: UIViewController, UITextFieldDelegate, UIImagePi
                 
                 let post = ["bild": "\(key).jpg",
                             "name": self.rezeptNameTextfield.text!,
-                            "zeit": 30]
+                            "zeit": Int(self.rezeptDauerTextfield.text!)!]
                 
                 let zubereitung = ["text" : self.rezeptZubereitungsTextfield.text!,
                                    "zutaten" : [["id" : 4,
