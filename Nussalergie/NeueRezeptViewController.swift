@@ -163,7 +163,6 @@ class NeueRezeptViewController: UIViewController, UITextFieldDelegate, UIImagePi
     }
     
     func findZutaten(text: String)->Void{
-        clear_console()
         if !text.isEmpty {
         rootRef.child("Zutaten").queryOrderedByChild("name").queryStartingAtValue(text).queryEndingAtValue(text+"\u{f8ff}").observeSingleEventOfType(.Value, withBlock: { snapshot in
             var zutat = RezeptZutat()
@@ -173,10 +172,6 @@ class NeueRezeptViewController: UIViewController, UITextFieldDelegate, UIImagePi
             }
         })
         }
-    }
-    
-    func clear_console(){
-        print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
     }
     
 }
