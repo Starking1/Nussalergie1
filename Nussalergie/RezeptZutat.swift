@@ -9,13 +9,19 @@
 import Foundation
 
 struct RezeptZutat {
-    let name: String
-    let menge: Int
-    let einheit: String
+    var name: String
+    var menge: Int
+    var einheit: String
     
     init(name: String, menge: Int, einheit: String){
         self.name = name
         self.menge = menge
         self.einheit = einheit
+    }
+    
+    init(){
+        self.name = ""
+        self.menge = 0
+        self.einheit = ""
     }
 }

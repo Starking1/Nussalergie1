@@ -54,6 +54,7 @@ class NeueRezeptViewController: UIViewController, UITextFieldDelegate, UIImagePi
         
         rezeptNameTextfield.frame = CGRectMake(20, 55, 100, 30)
         rezeptNameTextfield.backgroundColor = UIColor.greenColor()
+        rezeptNameTextfield.addTarget(self, action: #selector(textFieldDidChange), forControlEvents: UIControlEvents.EditingChanged)
         
         rezeptDauerLabel.frame = CGRectMake(20, 100, 100, 30)
         rezeptDauerLabel.text = "Dauer"
@@ -155,6 +156,27 @@ class NeueRezeptViewController: UIViewController, UITextFieldDelegate, UIImagePi
     
     func textFieldDidBeginEditing(textField: UITextField) {
         
+    }
+    
+    func textFieldDidChange(textField: UITextField) {
+       findZutaten(textField.text!)
+    }
+    
+    func findZutaten(text: String)->Void{
+        clear_console()
+        if !text.isEmpty {
+        rootRef.child("Zutaten").queryOrderedByChild("name").queryStartingAtValue(text).queryEndingAtValue(text+"\u{f8ff}").observeSingleEventOfType(.Value, withBlock: { snapshot in
+            var zutat = RezeptZutat()
+            for z in snapshot.children{
+                zutat.name = z.value!["name"] as! String
+                print(zutat.name)
+            }
+        })
+        }
+    }
+    
+    func clear_console(){
+        print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
     }
     
 }
