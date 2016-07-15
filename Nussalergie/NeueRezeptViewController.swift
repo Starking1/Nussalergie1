@@ -47,7 +47,7 @@ class NeueRezeptViewController: UIViewController, UITextFieldDelegate, UIImagePi
         rezeptImageView.image = UIImage.fontAwesomeIconWithName(.Camera, textColor: UIColor.blackColor(), size: CGSize(width: 50, height: 50))
         rezeptImageView.layer.zPosition = -1
         rezeptImageViewOverlayButton.frame = rezeptImageView.frame
-        rezeptImageViewOverlayButton.addTarget(self, action: #selector(pressedTakePicture), forControlEvents: .TouchUpInside)
+        
         
         rezeptNameLabel.frame = CGRectMake(20, 20, 100, 30)
         rezeptNameLabel.text = "Name"
@@ -158,6 +158,8 @@ class NeueRezeptViewController: UIViewController, UITextFieldDelegate, UIImagePi
         
     }
     
+    
+    //.addTarget(self, action: #selector(pressedTakePicture), forControlEvents: .TouchUpInside)
     func textFieldDidChange(textField: UITextField) {
        findZutaten(textField.text!)
     }
