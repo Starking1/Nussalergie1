@@ -12,8 +12,8 @@ import Firebase
 class EinkaufTableViewController: UITableViewController {
     
     
-    var einkaufListenElementeArray = [RezeptZutat(name: "Eier", menge: 5, einheit: "Stk")]
-    var einkaufListenTakenElementeArray = [RezeptZutat]()
+    var einkaufListenElementeArray = [RezeptZutat(name: "Eier", menge: 5, einheit: "Stk"),RezeptZutat(name: "Donut", menge: 1, einheit: "Stk")]
+    var einkaufListenTakenElementeArray = [RezeptZutat(name: "Mehl", menge: 500, einheit: "g")]
     
     
     override func viewDidLoad() {
@@ -32,9 +32,12 @@ class EinkaufTableViewController: UITableViewController {
         if(section == 0){
             return einkaufListenElementeArray.count
         }
-        else {
+        if section == 1 {
             return einkaufListenTakenElementeArray.count
             
+        } else {
+            
+            return 0
         }
         
     }
@@ -47,6 +50,7 @@ class EinkaufTableViewController: UITableViewController {
             let einkaufZutat = einkaufListenElementeArray[indexPath.row] as RezeptZutat
             
             if let zutatenTakenButton = cell.viewWithTag(3) as? UIButton{
+                zutatenTakenButton.setTitle("Check", forState: .Normal)
                 zutatenTakenButton.addTarget(self, action: #selector(pressedTakenButton), forControlEvents: .TouchUpInside)
             }
             
@@ -60,7 +64,13 @@ class EinkaufTableViewController: UITableViewController {
                 
         } else {
             let einkaufZutat = einkaufListenTakenElementeArray[indexPath.row] as RezeptZutat
-    
+            
+            if let zutatenTakenButton = cell.viewWithTag(3) as? UIButton{
+                zutatenTakenButton.setTitle("Uncheck", forState: .Normal)
+                zutatenTakenButton.addTarget(self, action: #selector(pressedUnTakenButton), forControlEvents: .TouchUpInside)
+              
+            }
+            
                 if let ZutatCellTitleLabel = cell.viewWithTag(1) as? UILabel {
                     ZutatCellTitleLabel.text = einkaufZutat.name
                 }
@@ -76,6 +86,31 @@ class EinkaufTableViewController: UITableViewController {
     func pressedTakenButton (sender: UIButton!){
         let touchPoint: CGPoint = sender.convertPoint(CGPointZero, toView: tableView)
         let clickedButtonIndexPath: NSIndexPath = tableView.indexPathForRowAtPoint(touchPoint)!
+        print(einkaufListenElementeArray[clickedButtonIndexPath.row].name)
+        einkaufListenTakenElementeArray.append(einkaufListenElementeArray[clickedButtonIndexPath.row])
+        einkaufListenElementeArray.removeAtIndex(clickedButtonIndexPath.row)
+        tableView.reloadData()
+   
+       
+        
+    }
+    
+    func pressedUnTakenButton (sender: UIButton!){
+        let touchPoint: CGPoint = sender.convertPoint(CGPointZero, toView: tableView)
+        let clickedButtonIndexPath: NSIndexPath = tableView.indexPathForRowAtPoint(touchPoint)!
+       print(einkaufListenTakenElementeArray[clickedButtonIndexPath.row].name)
+        einkaufListenElementeArray.append(einkaufListenTakenElementeArray[clickedButtonIndexPath.row])
+        einkaufListenTakenElementeArray.removeAtIndex(clickedButtonIndexPath.row)
+        tableView.reloadData()
+   
+        
+        
+    }
+    
+    func refresh(sender:AnyObject)
+    {
+        self.tableView.reloadData()
+        self.refreshControl?.endRefreshing()
     }
     
 }
