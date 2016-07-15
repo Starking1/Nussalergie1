@@ -117,27 +117,44 @@
                                 <rect key="frame" x="0.0" y="72" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="lGl-0j-qkT" id="7D6-7E-JQu">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xy7-HK-gzv">
+                                        <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xy7-HK-gzv">
                                             <rect key="frame" x="15" y="11" width="243" height="21"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="243" id="amU-XT-sUf"/>
+                                            </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="einheit" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qdb-wD-8od">
+                                        <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="einheit" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qdb-wD-8od">
                                             <rect key="frame" x="536" y="11" width="49" height="21"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="49" id="aDs-eL-KI0"/>
+                                            </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <textField opaque="NO" clipsSubviews="YES" tag="3" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Qyl-lf-lhb">
+                                        <textField opaque="NO" clipsSubviews="YES" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Qyl-lf-lhb">
                                             <rect key="frame" x="431" y="7" width="97" height="30"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="97" id="pPZ-gM-zlq"/>
+                                            </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits"/>
                                         </textField>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="xy7-HK-gzv" firstAttribute="baseline" secondItem="qdb-wD-8od" secondAttribute="baseline" id="8DQ-oS-jga"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="qdb-wD-8od" secondAttribute="trailing" constant="7" id="SHO-MD-tBA"/>
+                                        <constraint firstItem="xy7-HK-gzv" firstAttribute="leading" secondItem="7D6-7E-JQu" secondAttribute="leadingMargin" constant="7" id="Xvx-51-7FU"/>
+                                        <constraint firstItem="qdb-wD-8od" firstAttribute="leading" secondItem="Qyl-lf-lhb" secondAttribute="trailing" constant="8" symbolic="YES" id="hcq-q4-7Yg"/>
+                                        <constraint firstItem="xy7-HK-gzv" firstAttribute="centerY" secondItem="7D6-7E-JQu" secondAttribute="centerY" id="jEi-DW-BnI"/>
+                                        <constraint firstItem="Qyl-lf-lhb" firstAttribute="centerY" secondItem="qdb-wD-8od" secondAttribute="centerY" id="te1-lC-8gD"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>
