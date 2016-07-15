@@ -17,6 +17,7 @@
 		26F781781D297F8D00DFEF5E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 26F781761D297F8D00DFEF5E /* Main.storyboard */; };
 		26F7817A1D297F8D00DFEF5E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 26F781791D297F8D00DFEF5E /* Assets.xcassets */; };
 		26F7817D1D297F8D00DFEF5E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 26F7817B1D297F8D00DFEF5E /* LaunchScreen.storyboard */; };
+		5F6102EA0717DADBB8871BD5 /* Pods_Nussalergie.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DD4BD592E9070A0E6A91DDC /* Pods_Nussalergie.framework */; };
 		81329D571D2DA78F00C65978 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 81329D561D2DA78F00C65978 /* GoogleService-Info.plist */; };
 		8172EC0A1D2BF86100B1A4E4 /* RezepteTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8172EC091D2BF86100B1A4E4 /* RezepteTableViewController.swift */; };
 		8172EC111D2C01F800B1A4E4 /* Rezept.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8172EC101D2C01F800B1A4E4 /* Rezept.swift */; };
@@ -27,7 +28,6 @@
 		818A81551D2EBC6200E31D50 /* ZutatenCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 818A81531D2EBC6200E31D50 /* ZutatenCell.swift */; };
 		818A81561D2EBC6200E31D50 /* ZutatenCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 818A81541D2EBC6200E31D50 /* ZutatenCell.xib */; };
 		81D47D8D1D2D4413005C767A /* RezepteDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D47D8C1D2D4413005C767A /* RezepteDetailViewController.swift */; };
-		A90B8FD13AF63FFC6D938951 /* libPods-Nussalergie.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 32EC77495564DBB16BCCA941 /* libPods-Nussalergie.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -59,7 +59,7 @@
 		26F7817C1D297F8D00DFEF5E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		26F7817E1D297F8D00DFEF5E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2C690181DC9B49FB0CDE0264 /* Pods-Nussalergie.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Nussalergie.release.xcconfig"; path = "Pods/Target Support Files/Pods-Nussalergie/Pods-Nussalergie.release.xcconfig"; sourceTree = "<group>"; };
-		32EC77495564DBB16BCCA941 /* libPods-Nussalergie.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Nussalergie.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6DD4BD592E9070A0E6A91DDC /* Pods_Nussalergie.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Nussalergie.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		81329D561D2DA78F00C65978 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8172EC091D2BF86100B1A4E4 /* RezepteTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RezepteTableViewController.swift; sourceTree = "<group>"; };
 		8172EC101D2C01F800B1A4E4 /* Rezept.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Rezept.swift; sourceTree = "<group>"; };
@@ -77,7 +77,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8172EC231D2C0E3A00B1A4E4 /* FontAwesome.framework in Frameworks */,
-				A90B8FD13AF63FFC6D938951 /* libPods-Nussalergie.a in Frameworks */,
+				5F6102EA0717DADBB8871BD5 /* Pods_Nussalergie.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -142,7 +142,7 @@
 			isa = PBXGroup;
 			children = (
 				8172EC221D2C0E3A00B1A4E4 /* FontAwesome.framework */,
-				32EC77495564DBB16BCCA941 /* libPods-Nussalergie.a */,
+				6DD4BD592E9070A0E6A91DDC /* Pods_Nussalergie.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";

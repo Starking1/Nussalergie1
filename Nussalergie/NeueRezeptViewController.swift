@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import ImagePickerSheetController
 
 class NeueRezeptViewController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
@@ -47,6 +48,7 @@ class NeueRezeptViewController: UIViewController, UITextFieldDelegate, UIImagePi
         rezeptImageView.image = UIImage.fontAwesomeIconWithName(.Camera, textColor: UIColor.blackColor(), size: CGSize(width: 50, height: 50))
         rezeptImageView.layer.zPosition = -1
         rezeptImageViewOverlayButton.frame = rezeptImageView.frame
+        rezeptImageViewOverlayButton.addTarget(self, action: #selector(pressedTakePicture), forControlEvents: .TouchUpInside)
         
         
         rezeptNameLabel.frame = CGRectMake(20, 20, 100, 30)
@@ -140,16 +142,40 @@ class NeueRezeptViewController: UIViewController, UITextFieldDelegate, UIImagePi
     }
     
     func pressedTakePicture (sender: UIButton!){
-        imagePicker = UIImagePickerController()
-        imagePicker.delegate = self
-        imagePicker.sourceType = .Camera
-        imagePicker.allowsEditing = true
         
-        presentViewController(imagePicker, animated: true, completion: nil)
+        presentImagePickerSheet()
+        
+//        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .ActionSheet)
+//        
+//        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel) { (action) in
+//            // ...
+//        }
+//        alertController.addAction(cancelAction)
+//        
+//        let OKAction = UIAlertAction(title: "Neues Foto", style: .Default) { (action) in
+//            // ...
+//        }
+//        alertController.addAction(OKAction)
+//        
+//        let destroyAction = UIAlertAction(title: "Aus Album", style: .Default) { (action) in
+//            
+//        }
+//        alertController.addAction(destroyAction)
+//        
+//        self.presentViewController(alertController, animated: true) {
+//            // ...
+//        }
+        
+//        imagePicker = UIImagePickerController()
+//        imagePicker.delegate = self
+//        imagePicker.sourceType = .Camera
+//        imagePicker.allowsEditing = true
+//        
+//        presentViewController(imagePicker, animated: true, completion: nil)
     }
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
-        imagePicker.dismissViewControllerAnimated(true, completion: nil)
+        picker.dismissViewControllerAnimated(true, completion: nil)
         rezeptImageView.image = info[UIImagePickerControllerEditedImage] as? UIImage
         rezeptImageView.contentMode = .ScaleAspectFit
     }
@@ -174,6 +200,54 @@ class NeueRezeptViewController: UIViewController, UITextFieldDelegate, UIImagePi
             }
         })
         }
+    }
+    
+    
+    func presentImagePickerSheet() {
+        let presentImagePickerController: UIImagePickerControllerSourceType -> () = { source in
+            let controller = UIImagePickerController()
+            controller.delegate = self
+            var sourceType = source
+            if (!UIImagePickerController.isSourceTypeAvailable(sourceType)) {
+                sourceType = .PhotoLibrary
+                print("Fallback to camera roll as a source since the simulator doesn't support taking pictures")
+            }
+            controller.sourceType = sourceType
+            controller.allowsEditing = true
+            
+            self.presentViewController(controller, animated: true, completion: nil)
+        }
+        
+        let controller = ImagePickerSheetController(mediaType: .Image)
+        controller.maximumSelection = 1
+        
+        controller.addAction(ImagePickerAction(title: NSLocalizedString("Take Photo Or Video", comment: "Action Title"), handler: { _ in
+            presentImagePickerController(.Camera)
+            }))
+        
+        controller.addAction(ImagePickerAction(title: NSLocalizedString("Photo Library", comment: "Action Title"), secondaryTitle: { NSString.localizedStringWithFormat(NSLocalizedString("Select Photos", comment: "Action Title"), $0) as String}, handler: { _ in
+            presentImagePickerController(.PhotoLibrary)
+            }, secondaryHandler: { _, numberOfPhotos in
+                print("Send \(controller.selectedImageAssets)")
+        }))
+        
+        controller.addAction(ImagePickerAction(title: NSLocalizedString("Cancel", comment: "Action Title"), handler: { _ in
+        }))
+        
+        
+        if UIDevice.currentDevice().userInterfaceIdiom == .Pad {
+            controller.modalPresentationStyle = .Popover
+            controller.popoverPresentationController?.sourceView = view
+            controller.popoverPresentationController?.sourceRect = CGRect(origin: view.center, size: CGSize())
+        }
+        
+        presentViewController(controller, animated: true, completion: nil)
+    }
+    
+    // MARK: UIImagePickerControllerDelegate
+    
+    func imagePickerControllerDidCancel(picker: UIImagePickerController) {
+        dismissViewControllerAnimated(true, completion: nil)
     }
     
 }

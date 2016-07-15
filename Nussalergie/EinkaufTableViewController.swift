@@ -92,11 +92,9 @@ class EinkaufTableViewController: UITableViewController {
             einkaufListenElementeArray.removeAtIndex(clickedButtonIndexPath.row)
         } else {
             einkaufListenElementeArray.append(einkaufListenTakenElementeArray[clickedButtonIndexPath.row])
-            
             tableView.deleteRowsAtIndexPaths([clickedButtonIndexPath], withRowAnimation: .Right)
             let newIndexPath = NSIndexPath(forRow: einkaufListenElementeArray.count - 1, inSection: 0)
-            tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Left)
-            
+            tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Left) 
             einkaufListenTakenElementeArray.removeAtIndex(clickedButtonIndexPath.row)
         }
         tableView.endUpdates()
