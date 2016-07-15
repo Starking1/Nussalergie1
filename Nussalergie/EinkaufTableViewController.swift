@@ -83,14 +83,24 @@ class EinkaufTableViewController: UITableViewController {
         let touchPoint: CGPoint = sender.convertPoint(CGPointZero, toView: tableView)
         let clickedButtonIndexPath: NSIndexPath = tableView.indexPathForRowAtPoint(touchPoint)!
         
+        tableView.beginUpdates()
         if clickedButtonIndexPath.section == 0 {
             einkaufListenTakenElementeArray.append(einkaufListenElementeArray[clickedButtonIndexPath.row])
+            tableView.deleteRowsAtIndexPaths([clickedButtonIndexPath], withRowAnimation: .Left)
+            let newIndexPath = NSIndexPath(forRow: einkaufListenTakenElementeArray.count - 1, inSection: 1)
+            tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Right)
             einkaufListenElementeArray.removeAtIndex(clickedButtonIndexPath.row)
         } else {
             einkaufListenElementeArray.append(einkaufListenTakenElementeArray[clickedButtonIndexPath.row])
+            
+            tableView.deleteRowsAtIndexPaths([clickedButtonIndexPath], withRowAnimation: .Right)
+            let newIndexPath = NSIndexPath(forRow: einkaufListenElementeArray.count - 1, inSection: 0)
+            tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Left)
+            
             einkaufListenTakenElementeArray.removeAtIndex(clickedButtonIndexPath.row)
         }
-        tableView.reloadData()
+        tableView.endUpdates()
+        
     }
     
     
