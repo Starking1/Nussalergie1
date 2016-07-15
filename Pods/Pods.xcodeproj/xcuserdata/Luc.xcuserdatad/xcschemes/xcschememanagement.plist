@@ -4,11 +4,6 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>ImagePickerSheetController.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>Pods-Nussalergie.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -17,12 +12,7 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>2AAAB9973850C35994DC04473435E1A3</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>7A86A2395526833849F18799752A2E29</key>
+		<key>5B273D5403F4949B6ECD366624400E99</key>
 		<dict>
 			<key>primary</key>
 			<true/>

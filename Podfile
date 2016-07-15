@@ -8,6 +8,5 @@ target 'Nussalergie' do
 pod 'Firebase'
 pod 'Firebase/Database'
 pod 'Firebase/Storage'
-pod "ImagePickerSheetController", "~> 0.9.1"
 
 end

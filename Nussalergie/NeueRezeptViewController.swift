@@ -79,7 +79,7 @@ class NeueRezeptViewController: UIViewController, UITextFieldDelegate, UIImagePi
         rezeptZutatenButton.frame = CGRectMake(view.frame.width - 120, 210 + ZubereitungsTextfieldheight + 10, 100, 30)
         rezeptZutatenButton.setTitle("Posten", forState: .Normal)
         rezeptZutatenButton.setTitleColor(UIColor.blueColor(), forState: .Normal)
-        rezeptZutatenButton.addTarget(self, action: #selector(pressedPostButton), forControlEvents: .TouchUpInside)
+        rezeptZutatenButton.addTarget(self, action: Selector(), forControlEvents: .TouchUpInside)
 
         scrollView.addSubview(rezeptImageView)
         scrollView.addSubview(rezeptImageViewOverlayButton)
@@ -142,36 +142,7 @@ class NeueRezeptViewController: UIViewController, UITextFieldDelegate, UIImagePi
     }
     
     func pressedTakePicture (sender: UIButton!){
-        
         presentImagePickerSheet()
-        
-//        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .ActionSheet)
-//        
-//        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel) { (action) in
-//            // ...
-//        }
-//        alertController.addAction(cancelAction)
-//        
-//        let OKAction = UIAlertAction(title: "Neues Foto", style: .Default) { (action) in
-//            // ...
-//        }
-//        alertController.addAction(OKAction)
-//        
-//        let destroyAction = UIAlertAction(title: "Aus Album", style: .Default) { (action) in
-//            
-//        }
-//        alertController.addAction(destroyAction)
-//        
-//        self.presentViewController(alertController, animated: true) {
-//            // ...
-//        }
-        
-//        imagePicker = UIImagePickerController()
-//        imagePicker.delegate = self
-//        imagePicker.sourceType = .Camera
-//        imagePicker.allowsEditing = true
-//        
-//        presentViewController(imagePicker, animated: true, completion: nil)
     }
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
@@ -218,30 +189,24 @@ class NeueRezeptViewController: UIViewController, UITextFieldDelegate, UIImagePi
             self.presentViewController(controller, animated: true, completion: nil)
         }
         
-        let controller = ImagePickerSheetController(mediaType: .Image)
-        controller.maximumSelection = 1
+        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .ActionSheet)
         
-        controller.addAction(ImagePickerAction(title: NSLocalizedString("Take Photo Or Video", comment: "Action Title"), handler: { _ in
-            presentImagePickerController(.Camera)
-            }))
-        
-        controller.addAction(ImagePickerAction(title: NSLocalizedString("Photo Library", comment: "Action Title"), secondaryTitle: { NSString.localizedStringWithFormat(NSLocalizedString("Select Photos", comment: "Action Title"), $0) as String}, handler: { _ in
-            presentImagePickerController(.PhotoLibrary)
-            }, secondaryHandler: { _, numberOfPhotos in
-                print("Send \(controller.selectedImageAssets)")
-        }))
-        
-        controller.addAction(ImagePickerAction(title: NSLocalizedString("Cancel", comment: "Action Title"), handler: { _ in
-        }))
-        
-        
-        if UIDevice.currentDevice().userInterfaceIdiom == .Pad {
-            controller.modalPresentationStyle = .Popover
-            controller.popoverPresentationController?.sourceView = view
-            controller.popoverPresentationController?.sourceRect = CGRect(origin: view.center, size: CGSize())
+        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel) {(action) in
         }
+        alertController.addAction(cancelAction)
         
-        presentViewController(controller, animated: true, completion: nil)
+        let newPhotoAction = UIAlertAction(title: "Neues Foto Aufnehmen", style: .Default) { (action) in
+            presentImagePickerController(.Camera)
+        }
+        alertController.addAction(newPhotoAction)
+        
+        let photoLibAction = UIAlertAction(title: "Photo Library", style: .Default) { (action) in
+            presentImagePickerController(.PhotoLibrary)
+        }
+        alertController.addAction(photoLibAction)
+        
+        self.presentViewController(alertController, animated: true) {}
+        
     }
     
     // MARK: UIImagePickerControllerDelegate
