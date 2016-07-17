@@ -117,7 +117,7 @@
                                 <rect key="frame" x="0.0" y="72" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="lGl-0j-qkT" id="7D6-7E-JQu">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xy7-HK-gzv">
@@ -341,11 +341,37 @@
                             <outlet property="delegate" destination="t6d-Sj-rGg" id="aeq-G8-Vsr"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Produkte" id="Qvu-9W-AgY" userLabel="Produkte"/>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Produkte" id="Qvu-9W-AgY" userLabel="Produkte">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="vO9-tx-3fe">
+                            <connections>
+                                <segue destination="eag-Dm-7bR" kind="show" id="HjJ-n1-fSf"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vny-YK-3gs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1713" y="315"/>
+            <point key="canvasLocation" x="1741" y="311"/>
+        </scene>
+        <!--Neues Produkt Neues Produkt View Controller-->
+        <scene sceneID="XjN-IW-9va">
+            <objects>
+                <viewController id="eag-Dm-7bR" customClass="NeuesProduktNeuesProduktViewController" customModule="Nussalergie" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="zrH-tn-L3f"/>
+                        <viewControllerLayoutGuide type="bottom" id="a5p-Yj-Pyk"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="gJh-IS-2Iu">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="f6E-tT-Y4g" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2400" y="311"/>
         </scene>
         <!--Produktliste-->
         <scene sceneID="pAI-SY-40U">
