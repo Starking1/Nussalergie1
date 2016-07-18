@@ -12,6 +12,8 @@ import FontAwesome
 
 class RezepteDetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    let notification = CWStatusBarNotification()
+    
     let rezeptImageView: UIImageView = UIImageView()
     var rezeptNavigationTitle: String = String()
     let rezeptDescriptionLabel: UILabel = UILabel()
@@ -25,12 +27,9 @@ class RezepteDetailViewController: UIViewController, UITableViewDelegate, UITabl
     var zubereitungsDict = [String : AnyObject]()
     
     let zutatenRef =  FIRDatabase.database().reference().child("Zutaten")
-
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        print(NSUserDefaults.standardUserDefaults().objectForKey("einkaufsListe"))
         
         let zubereitungsRef =  FIRDatabase.database().reference().child("Zubereitung").child("\(rezeptID)")
         
@@ -40,7 +39,7 @@ class RezepteDetailViewController: UIViewController, UITableViewDelegate, UITabl
         zutatenTableView.registerNib(UINib(nibName: "ZutatenCell", bundle: nil), forCellReuseIdentifier: "zutatenCell")
         
         //NavigationBar Setzen
-        let button = UIBarButtonItem(image: UIImage.fontAwesomeIconWithName(.Archive, textColor: UIColor.blackColor(), size: CGSize(width: 30, height: 30))
+        let button = UIBarButtonItem(image: UIImage.fontAwesomeIconWithName(.PencilSquareO, textColor: UIColor.blackColor(), size: CGSize(width: 30, height: 30))
             , style: UIBarButtonItemStyle.Plain, target: self, action: #selector(addToEinkaufsListeButtonPressed))
         self.navigationItem.title = rezeptNavigationTitle
         self.navigationItem.rightBarButtonItem = button
@@ -161,6 +160,15 @@ class RezepteDetailViewController: UIViewController, UITableViewDelegate, UITabl
    
         userDefaults.setObject(encodedData, forKey: "einkaufsListe")
         userDefaults.synchronize()
+        
+        self.notification.notificationStyle = .NavigationBarNotification
+        self.notification.notificationAnimationInStyle = .Bottom
+        self.notification.notificationAnimationOutStyle = .Top
+        self.notification.notificationLabelBackgroundColor = UIColor(red: 0.2314, green: 0.8559, blue: 0.596, alpha: 1.0)
+        self.notification.notificationLabelTextColor = UIColor.whiteColor()
+        self.notification.notificationLabelFont = UIFont(name: "Helvetica Neue", size: 15.0)!
+        self.notification.displayNotificationWithMessage("Zur Einkaufsliste Hinzugefügt", forDuration: 1.0)
+        
         
     }
     

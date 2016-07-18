@@ -28,6 +28,8 @@
 		818A81521D2EBA3500E31D50 /* RezeptZutat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 818A81511D2EBA3500E31D50 /* RezeptZutat.swift */; };
 		818A81551D2EBC6200E31D50 /* ZutatenCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 818A81531D2EBC6200E31D50 /* ZutatenCell.swift */; };
 		818A81561D2EBC6200E31D50 /* ZutatenCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 818A81541D2EBC6200E31D50 /* ZutatenCell.xib */; };
+		81B2E2C21D3D86CC00EA274A /* CWStatusBarNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81B2E2C01D3D86CC00EA274A /* CWStatusBarNotification.swift */; };
+		81B2E2C31D3D86CC00EA274A /* CWStatusBarNotificationUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81B2E2C11D3D86CC00EA274A /* CWStatusBarNotificationUtils.swift */; };
 		81D47D8D1D2D4413005C767A /* RezepteDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D47D8C1D2D4413005C767A /* RezepteDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -70,6 +72,8 @@
 		818A81511D2EBA3500E31D50 /* RezeptZutat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RezeptZutat.swift; sourceTree = "<group>"; };
 		818A81531D2EBC6200E31D50 /* ZutatenCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZutatenCell.swift; sourceTree = "<group>"; };
 		818A81541D2EBC6200E31D50 /* ZutatenCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZutatenCell.xib; sourceTree = "<group>"; };
+		81B2E2C01D3D86CC00EA274A /* CWStatusBarNotification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CWStatusBarNotification.swift; sourceTree = "<group>"; };
+		81B2E2C11D3D86CC00EA274A /* CWStatusBarNotificationUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CWStatusBarNotificationUtils.swift; sourceTree = "<group>"; };
 		81D47D8C1D2D4413005C767A /* RezepteDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RezepteDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -144,6 +148,7 @@
 		8172EC261D2C0E7A00B1A4E4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				81B2E2C41D3D86D100EA274A /* CWStatusBarNotification */,
 				8172EC221D2C0E3A00B1A4E4 /* FontAwesome.framework */,
 				6DD4BD592E9070A0E6A91DDC /* Pods_Nussalergie.framework */,
 			);
@@ -178,6 +183,16 @@
 				265C39871D355FA900ED611D /* EinkaufTableViewController.swift */,
 			);
 			name = Einkaufsliste;
+			sourceTree = "<group>";
+		};
+		81B2E2C41D3D86D100EA274A /* CWStatusBarNotification */ = {
+			isa = PBXGroup;
+			children = (
+				81B2E2C01D3D86CC00EA274A /* CWStatusBarNotification.swift */,
+				81B2E2C11D3D86CC00EA274A /* CWStatusBarNotificationUtils.swift */,
+			);
+			name = CWStatusBarNotification;
+			path = Nussalergie;
 			sourceTree = "<group>";
 		};
 		C2E231E19F5AE096795F7F6F /* Pods */ = {
@@ -322,8 +337,10 @@
 				263840711D3978AE00BBC6BD /* ZutatSearchViewController.swift in Sources */,
 				26391F361D2D4F3700A23140 /* ProdukteTableViewController.swift in Sources */,
 				26F781731D297F8D00DFEF5E /* AppDelegate.swift in Sources */,
+				81B2E2C31D3D86CC00EA274A /* CWStatusBarNotificationUtils.swift in Sources */,
 				26391F301D2D46B700A23140 /* Produkt.swift in Sources */,
 				8172EC291D2C0F5100B1A4E4 /* TabBarViewController.swift in Sources */,
+				81B2E2C21D3D86CC00EA274A /* CWStatusBarNotification.swift in Sources */,
 				26869CA71D3B7FD20077CBEB /* NeuesProduktViewController.swift in Sources */,
 				26BA626C1D2F9E16005D725A /* NeueRezeptViewController.swift in Sources */,
 				8172EC0A1D2BF86100B1A4E4 /* RezepteTableViewController.swift in Sources */,

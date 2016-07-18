@@ -21,15 +21,21 @@ class EinkaufTableViewController: UITableViewController {
         navigationItem.title = "Einkaufsliste"
         
         
-        let button = UIBarButtonItem(image: UIImage.fontAwesomeIconWithName(.Archive, textColor: UIColor.blackColor(), size: CGSize(width: 30, height: 30)), style: UIBarButtonItemStyle.Plain, target: self, action: #selector(deletestuff))
+        let button = UIBarButtonItem(image: UIImage.fontAwesomeIconWithName(.TrashO, textColor: UIColor.blackColor(), size: CGSize(width: 30, height: 30)), style: UIBarButtonItemStyle.Plain, target: self, action: #selector(deletestuff))
         self.navigationItem.rightBarButtonItem = button
         
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
         populateTableView()
-        
+        tableView.reloadData()
     }
     
     func deletestuff (){
         NSUserDefaults.standardUserDefaults().removeObjectForKey("einkaufsListe")
+        einkaufListenElementeArray = [RezeptZutat]()
+        einkaufListenTakenElementeArray = [RezeptZutat]()
         tableView.reloadData()
     }
     
