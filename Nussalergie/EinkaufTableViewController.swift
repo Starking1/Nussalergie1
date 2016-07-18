@@ -12,8 +12,8 @@ import Firebase
 class EinkaufTableViewController: UITableViewController {
     
     
-    var einkaufListenElementeArray = [RezeptZutat(name: "Eier", menge: 5, einheit: "Stk"),RezeptZutat(name: "Donut", menge: 1, einheit: "Stk")]
-    var einkaufListenTakenElementeArray = [RezeptZutat(name: "Mehl", menge: 500, einheit: "g")]
+    var einkaufListenElementeArray = [RezeptZutat]()
+    var einkaufListenTakenElementeArray = [RezeptZutat]()
     
     
     override func viewDidLoad() {

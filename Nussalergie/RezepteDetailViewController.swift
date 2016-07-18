@@ -151,5 +151,7 @@ class RezepteDetailViewController: UIViewController, UITableViewDelegate, UITabl
         // Pass the selected object to the new view controller.
     }
     */
+    
+    
 
 }

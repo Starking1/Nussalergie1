@@ -101,7 +101,7 @@ class RezepteTableViewController: UITableViewController {
         return cell
     }
     
-    /* Edit Buttons in Cells
+    // Edit Buttons in Cells
      override func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
      let more = UITableViewRowAction(style: .Normal, title: "More") { action, index in
      print("more button tapped")
@@ -129,7 +129,7 @@ class RezepteTableViewController: UITableViewController {
      override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
      
      }
-     */
+    
     
     /*
      // Override to support conditional editing of the table view.
@@ -190,6 +190,23 @@ class RezepteTableViewController: UITableViewController {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
     }
+    
+    
+    var zutatenSpeicher: [RezeptZutat]{
+        get {
+            if let returnValue = NSUserDefaults.standardUserDefaults().objectForKey("zutatenSpeicher") as? [RezeptZutat] {
+                return returnValue
+            } else {
+                return [] //Default value
+            }
+        }
+        set {
+            NSUserDefaults.standardUserDefaults().setObject(newValue, forKey: "zutatenSpeicher")
+            NSUserDefaults.standardUserDefaults().synchronize()
+        }
+            
+        }
+        
     
     
     
