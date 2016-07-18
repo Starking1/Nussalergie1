@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct RezeptZutat {
+class RezeptZutat: NSObject, NSCoding {
     var name: String
     var menge: Int
     var einheit: String
@@ -19,9 +19,22 @@ struct RezeptZutat {
         self.einheit = einheit
     }
     
-    init(){
+    override init(){
         self.name = ""
         self.menge = 0
         self.einheit = ""
+    }
+    
+    required convenience init(coder aDecoder: NSCoder) {
+        let name = aDecoder.decodeObjectForKey("name") as! String
+        let menge = aDecoder.decodeIntegerForKey("menge")
+        let einheit = aDecoder.decodeObjectForKey("einheit") as! String
+        self.init(name: name, menge: menge, einheit: einheit)
+    }
+    
+    func encodeWithCoder(aCoder: NSCoder) {
+        aCoder.encodeObject(name, forKey: "name")
+        aCoder.encodeInteger(menge, forKey: "menge")
+        aCoder.encodeObject(einheit, forKey: "einheit")
     }
 }

@@ -30,6 +30,8 @@ class RezepteDetailViewController: UIViewController, UITableViewDelegate, UITabl
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        print(NSUserDefaults.standardUserDefaults().objectForKey("einkaufsListe"))
+        
         let zubereitungsRef =  FIRDatabase.database().reference().child("Zubereitung").child("\(rezeptID)")
         
         zutatenTableView.delegate = self
@@ -38,10 +40,11 @@ class RezepteDetailViewController: UIViewController, UITableViewDelegate, UITabl
         zutatenTableView.registerNib(UINib(nibName: "ZutatenCell", bundle: nil), forCellReuseIdentifier: "zutatenCell")
         
         //NavigationBar Setzen
-        let button = UIBarButtonItem()
-        button.image = UIImage.fontAwesomeIconWithName(.Archive, textColor: UIColor.blackColor(), size: CGSize(width: 30, height: 30))
+        let button = UIBarButtonItem(image: UIImage.fontAwesomeIconWithName(.Archive, textColor: UIColor.blackColor(), size: CGSize(width: 30, height: 30))
+            , style: UIBarButtonItemStyle.Plain, target: self, action: #selector(addToEinkaufsListeButtonPressed))
         self.navigationItem.title = rezeptNavigationTitle
         self.navigationItem.rightBarButtonItem = button
+        
         
         //ScrollView initialisieren
         scrollView.frame = CGRectMake(0, 0, view.frame.width, view.frame.height)
@@ -127,7 +130,7 @@ class RezepteDetailViewController: UIViewController, UITableViewDelegate, UITabl
         
         for i in 0..<zutatenDictArray.count{
             let id = String(zutatenDictArray[i]["id"]!)
-            self.zutatenRef.child(id).observeEventType(FIRDataEventType.Value, withBlock: { (snapshot) in
+            self.zutatenRef.child(id).observeSingleEventOfType(.Value, withBlock: { (snapshot) in
                 let zutat = snapshot.value as! [String: String]
                 
                 self.zutatenArray.append(RezeptZutat(name: zutat["name"]!, menge: (zutatenDictArray[i]["menge"] as! Int), einheit: zutat["einheit"]!))
@@ -140,6 +143,25 @@ class RezepteDetailViewController: UIViewController, UITableViewDelegate, UITabl
                 print(error.localizedDescription)
             }
         }
+    }
+    
+    func addToEinkaufsListeButtonPressed(sender: UIButton!){
+        let userDefaults = NSUserDefaults.standardUserDefaults()
+        var neueEinkaufsliste = [RezeptZutat]()
+        
+        if let decoded  = userDefaults.objectForKey("einkaufsListe") as? NSData{
+            var decodedEinkaufslisteArray = NSKeyedUnarchiver.unarchiveObjectWithData(decoded) as! [RezeptZutat]
+            decodedEinkaufslisteArray += (self.zutatenArray)
+            neueEinkaufsliste = decodedEinkaufslisteArray
+        } else {
+            neueEinkaufsliste = self.zutatenArray
+        }
+        
+        let encodedData = NSKeyedArchiver.archivedDataWithRootObject(neueEinkaufsliste)
+   
+        userDefaults.setObject(encodedData, forKey: "einkaufsListe")
+        userDefaults.synchronize()
+        
     }
     
     /*

@@ -20,8 +20,19 @@ class EinkaufTableViewController: UITableViewController {
         super.viewDidLoad()
         navigationItem.title = "Einkaufsliste"
         
+        
+        let button = UIBarButtonItem(image: UIImage.fontAwesomeIconWithName(.Archive, textColor: UIColor.blackColor(), size: CGSize(width: 30, height: 30)), style: UIBarButtonItemStyle.Plain, target: self, action: #selector(deletestuff))
+        self.navigationItem.rightBarButtonItem = button
+        
+        populateTableView()
+        
     }
-
+    
+    func deletestuff (){
+        NSUserDefaults.standardUserDefaults().removeObjectForKey("einkaufsListe")
+        tableView.reloadData()
+    }
+    
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 2
     }
@@ -41,6 +52,15 @@ class EinkaufTableViewController: UITableViewController {
         }
         else {
             return "Gefunden"
+        }
+    }
+    
+    func populateTableView(){
+        let userDefaults = NSUserDefaults.standardUserDefaults()
+        
+        if let decoded  = userDefaults.objectForKey("einkaufsListe") as? NSData{
+            let decodedEinkaufslisteArray = NSKeyedUnarchiver.unarchiveObjectWithData(decoded) as! [RezeptZutat]
+            einkaufListenElementeArray = decodedEinkaufslisteArray
         }
     }
     

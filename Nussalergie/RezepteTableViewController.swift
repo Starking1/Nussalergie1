@@ -101,24 +101,15 @@ class RezepteTableViewController: UITableViewController {
         return cell
     }
     
-    // Edit Buttons in Cells
+    /* Edit Buttons in Cells
      override func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
      let more = UITableViewRowAction(style: .Normal, title: "More") { action, index in
-     print("more button tapped")
+        
+        
      }
-     more.backgroundColor = UIColor.lightGrayColor()
+     more.backgroundColor = UIColor.greenColor()
      
-     let favorite = UITableViewRowAction(style: .Normal, title: "Favorite") { action, index in
-     print("favorite button tapped")
-     }
-     favorite.backgroundColor = UIColor.orangeColor()
-     
-     let share = UITableViewRowAction(style: .Destructive, title: "Share") { action, index in
-     print("share button tapped")
-     }
-     share.backgroundColor = UIColor.blueColor()
-     
-     return [share, favorite, more]
+     return [more]
      }
      
      
@@ -130,7 +121,7 @@ class RezepteTableViewController: UITableViewController {
      
      }
     
-    
+    */
     /*
      // Override to support conditional editing of the table view.
      override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
@@ -191,7 +182,7 @@ class RezepteTableViewController: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     
-    
+    /*
     var zutatenSpeicher: [RezeptZutat]{
         get {
             if let returnValue = NSUserDefaults.standardUserDefaults().objectForKey("zutatenSpeicher") as? [RezeptZutat] {
@@ -207,7 +198,7 @@ class RezepteTableViewController: UITableViewController {
             
         }
         
-    
+    */
     
     
 }

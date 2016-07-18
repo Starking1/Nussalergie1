@@ -8,7 +8,6 @@
 
 import UIKit
 import Firebase
-import ImagePickerSheetController
 
 class NeuesProduktNeuesProduktViewController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate  {
 

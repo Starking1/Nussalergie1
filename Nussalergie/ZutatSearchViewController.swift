@@ -38,7 +38,7 @@ class ZutatSearchViewController: UITableViewController {
             zutatCellEinheitLabel.text = zutat.einheit
         }
         if let zutatCellMengeTextfield = cell.viewWithTag(3) as? UITextField {
-            
+            print(zutatCellMengeTextfield)
         }
         
         return cell
