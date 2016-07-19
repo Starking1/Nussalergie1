@@ -146,28 +146,30 @@ class RezepteDetailViewController: UIViewController, UITableViewDelegate, UITabl
     
     func addToEinkaufsListeButtonPressed(sender: UIButton!){
         let userDefaults = NSUserDefaults.standardUserDefaults()
+        var zutatenFurEinkaufsliste = zutatenArray
         var neueEinkaufsliste = [RezeptZutat]()
         
         if let decoded  = userDefaults.objectForKey("einkaufsListe") as? NSData{
             var decodedEinkaufslisteArray = NSKeyedUnarchiver.unarchiveObjectWithData(decoded) as! [RezeptZutat]
+            
             for zutatInEinkaufsliste in decodedEinkaufslisteArray {
                 var i = 0
-                for zutatInRezept in zutatenArray {
+                for zutatInRezept in zutatenFurEinkaufsliste {
                     
                     if zutatInRezept.name == zutatInEinkaufsliste.name {
                         
                         zutatInEinkaufsliste.menge += zutatInRezept.menge
-                        zutatenArray.removeAtIndex(i)
+                        zutatenFurEinkaufsliste.removeAtIndex(i)
                         break
                     }
                     i += 1
              
                 }
             }
-            decodedEinkaufslisteArray += (self.zutatenArray)
+            decodedEinkaufslisteArray += zutatenFurEinkaufsliste
             neueEinkaufsliste = decodedEinkaufslisteArray
         } else {
-            neueEinkaufsliste = self.zutatenArray
+            neueEinkaufsliste = zutatenFurEinkaufsliste
         }
         
         let encodedData = NSKeyedArchiver.archivedDataWithRootObject(neueEinkaufsliste)
