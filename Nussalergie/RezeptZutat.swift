@@ -37,4 +37,26 @@ class RezeptZutat: NSObject, NSCoding {
         aCoder.encodeInteger(menge, forKey: "menge")
         aCoder.encodeObject(einheit, forKey: "einheit")
     }
+    
+    
+    
+}
+
+infix operator  +++{ associativity left precedence 140 } // 1
+func +++(left: [RezeptZutat], right: [RezeptZutat]) -> [RezeptZutat] { // 2
+    var leftArray = left
+    var rightArray = right
+    
+    for object in leftArray {
+        for (i,object2) in rightArray.enumerate() {
+            if object2.name == object.name {
+                object.menge += object2.menge
+                rightArray.removeAtIndex(i)
+            }
+        }
+    }
+    leftArray += rightArray
+    
+    
+    return leftArray
 }

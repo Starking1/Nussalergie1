@@ -146,33 +146,24 @@ class RezepteDetailViewController: UIViewController, UITableViewDelegate, UITabl
     
     func addToEinkaufsListeButtonPressed(sender: UIButton!){
         let userDefaults = NSUserDefaults.standardUserDefaults()
-        var zutatenFurEinkaufsliste = zutatenArray
+        let zutatenFurEinkaufsliste = zutatenArray
         var neueEinkaufsliste = [RezeptZutat]()
         
         if let decoded  = userDefaults.objectForKey("einkaufsListe") as? NSData{
-            var decodedEinkaufslisteArray = NSKeyedUnarchiver.unarchiveObjectWithData(decoded) as! [RezeptZutat]
-            
-            for zutatInEinkaufsliste in decodedEinkaufslisteArray {
-                var i = 0
-                for zutatInRezept in zutatenFurEinkaufsliste {
-                    if zutatInRezept.name == zutatInEinkaufsliste.name {
-                        zutatInEinkaufsliste.menge += zutatInRezept.menge
-                        zutatenFurEinkaufsliste.removeAtIndex(i)
-                    }
-                    i += 1
-                }
-            }
-            decodedEinkaufslisteArray += zutatenFurEinkaufsliste
-            neueEinkaufsliste = decodedEinkaufslisteArray
+            let decodedEinkaufslisteArray = NSKeyedUnarchiver.unarchiveObjectWithData(decoded) as! [RezeptZutat]
+            neueEinkaufsliste = decodedEinkaufslisteArray +++ zutatenFurEinkaufsliste
         } else {
             neueEinkaufsliste = zutatenFurEinkaufsliste
         }
         
         let encodedData = NSKeyedArchiver.archivedDataWithRootObject(neueEinkaufsliste)
-   
+        
         userDefaults.setObject(encodedData, forKey: "einkaufsListe")
         userDefaults.synchronize()
-        
+        displayAddedToEinkaufslisteNotification()
+    }
+    
+    func displayAddedToEinkaufslisteNotification(){
         self.notification.notificationStyle = .NavigationBarNotification
         self.notification.notificationAnimationInStyle = .Bottom
         self.notification.notificationAnimationOutStyle = .Top
@@ -180,10 +171,7 @@ class RezepteDetailViewController: UIViewController, UITableViewDelegate, UITabl
         self.notification.notificationLabelTextColor = UIColor.whiteColor()
         self.notification.notificationLabelFont = UIFont(name: "Helvetica Neue", size: 15.0)!
         self.notification.displayNotificationWithMessage("Zur Einkaufsliste Hinzugefügt", forDuration: 1.0)
-        
-        
     }
-    
     /*
     // MARK: - Navigation
 
