@@ -155,15 +155,11 @@ class RezepteDetailViewController: UIViewController, UITableViewDelegate, UITabl
             for zutatInEinkaufsliste in decodedEinkaufslisteArray {
                 var i = 0
                 for zutatInRezept in zutatenFurEinkaufsliste {
-                    
                     if zutatInRezept.name == zutatInEinkaufsliste.name {
-                        
                         zutatInEinkaufsliste.menge += zutatInRezept.menge
                         zutatenFurEinkaufsliste.removeAtIndex(i)
-                        break
                     }
                     i += 1
-             
                 }
             }
             decodedEinkaufslisteArray += zutatenFurEinkaufsliste
