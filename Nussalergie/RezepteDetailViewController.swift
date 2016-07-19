@@ -19,6 +19,9 @@ class RezepteDetailViewController: UIViewController, UITableViewDelegate, UITabl
     let rezeptDescriptionLabel: UILabel = UILabel()
     var rezeptID: String = String()
     
+    let anzahlPersonenLabel: UILabel = UILabel()
+    let anzahlPersonenTextField: UITextField = UITextField()
+    
     let scrollView: UIScrollView = UIScrollView()
     let zutatenTableView: UITableView = UITableView()
     
@@ -59,12 +62,16 @@ class RezepteDetailViewController: UIViewController, UITableViewDelegate, UITabl
             self.rezeptDescriptionLabel.text = self.zubereitungsDict["text"] as? String
             
             
-            self.zutatenTableView.frame = CGRectMake(5, self.rezeptImageView.frame.height, self.view.frame.width-10, 0)
+            self.zutatenTableView.frame = CGRectMake(5, self.rezeptImageView.frame.height + 40, self.view.frame.width-10, 0)
             self.zutatenTableView.backgroundColor = UIColor.blueColor()
             
             
+            self.anzahlPersonenLabel.frame = CGRectMake(5,self.rezeptImageView.frame.height + 10, 100,30)
+            self.anzahlPersonenLabel.text = "Anzahl"
             
-            self.rezeptDescriptionLabel.frame = CGRectMake(5, self.rezeptImageView.frame.height + self.zutatenTableView.frame.height + 20, self.view.frame.width-10, 500)
+            self.anzahlPersonenTextField.frame = CGRectMake(self.view.frame.width - 120,self.rezeptImageView.frame.height + 10, 100,30)
+          //  self.anzahlPersonenTextField.text =
+            self.rezeptDescriptionLabel.frame = CGRectMake(5, 100 + self.rezeptImageView.frame.height + self.zutatenTableView.frame.height + 20, self.view.frame.width-10, 500)
             self.rezeptDescriptionLabel.numberOfLines = 0
             self.rezeptDescriptionLabel.lineBreakMode = .ByWordWrapping
             self.rezeptDescriptionLabel.sizeToFit()
@@ -85,7 +92,8 @@ class RezepteDetailViewController: UIViewController, UITableViewDelegate, UITabl
         scrollView.addSubview(rezeptImageView)
         scrollView.addSubview(rezeptDescriptionLabel)
         scrollView.addSubview(zutatenTableView)
-        
+        scrollView.addSubview(anzahlPersonenLabel)
+        scrollView.addSubview(anzahlPersonenTextField)
         view.addSubview(scrollView)
     }
 
