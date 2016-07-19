@@ -150,6 +150,20 @@ class RezepteDetailViewController: UIViewController, UITableViewDelegate, UITabl
         
         if let decoded  = userDefaults.objectForKey("einkaufsListe") as? NSData{
             var decodedEinkaufslisteArray = NSKeyedUnarchiver.unarchiveObjectWithData(decoded) as! [RezeptZutat]
+            for zutatInEinkaufsliste in decodedEinkaufslisteArray {
+                var i = 0
+                for zutatInRezept in zutatenArray {
+                    
+                    if zutatInRezept.name == zutatInEinkaufsliste.name {
+                        
+                        zutatInEinkaufsliste.menge += zutatInRezept.menge
+                        zutatenArray.removeAtIndex(i)
+                        break
+                    }
+                    i += 1
+             
+                }
+            }
             decodedEinkaufslisteArray += (self.zutatenArray)
             neueEinkaufsliste = decodedEinkaufslisteArray
         } else {
