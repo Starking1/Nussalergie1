@@ -19,6 +19,11 @@ class RezepteDetailViewController: UIViewController, UITableViewDelegate, UITabl
     let rezeptDescriptionLabel: UILabel = UILabel()
     var rezeptID: String = String()
     
+    let anzahlView: UIView = UIView()
+    var anzahlTextLabel: UILabel = UILabel()
+    var anzahlNummerTextLabel: UILabel = UILabel()
+    let anzahlStepper: UIStepper = UIStepper()
+    
     let scrollView: UIScrollView = UIScrollView()
     let zutatenTableView: UITableView = UITableView()
     
@@ -53,14 +58,33 @@ class RezepteDetailViewController: UIViewController, UITableViewDelegate, UITabl
         rezeptImageView.frame = CGRectMake(5, 5,view.frame.width-10,view.frame.width-10)
         //rezeptImageView.backgroundColor = UIColor.blackColor()
         
+        //AnzahlView initialisieren
+        anzahlView.frame = CGRectMake(5, self.rezeptImageView.frame.size.height + 10, self.view.frame.width-10, 40)
+        anzahlView.backgroundColor = UIColor.blueColor()
+        anzahlTextLabel.text = "Anzahl"
+        anzahlTextLabel.backgroundColor = UIColor.greenColor()
+        anzahlTextLabel.frame = CGRectMake(10, 0, 30, 30)
+        anzahlTextLabel.center.y = anzahlView.frame.height / 2
+        anzahlTextLabel.sizeToFit()
+        
+        anzahlStepper.frame = CGRectMake(anzahlView.frame.width - 100, 0, 0, 0)
+        anzahlStepper.center.y = anzahlView.frame.height / 2
+        anzahlStepper.minimumValue = 0
+        anzahlStepper.addTarget(self, action: #selector(stepperPressed), forControlEvents: .ValueChanged)
+        anzahlView.addSubview(anzahlStepper)
+        
+        
+        anzahlView.addSubview(anzahlTextLabel)
+        
+        
         
         zubereitungsRef.observeSingleEventOfType(.Value, withBlock: { (snapshot) in
             self.zubereitungsDict = snapshot.value as! [String : AnyObject]
             self.rezeptDescriptionLabel.text = self.zubereitungsDict["text"] as? String
             
             
-            self.zutatenTableView.frame = CGRectMake(5, self.rezeptImageView.frame.height + 5, self.view.frame.width-10, 0)
-            self.zutatenTableView.backgroundColor = UIColor.blueColor()
+            self.zutatenTableView.frame = CGRectMake(5, self.anzahlView.frame.size.height + self.rezeptImageView.frame.height + 5, self.view.frame.width-10, 0)
+            //self.zutatenTableView.backgroundColor = UIColor.blueColor()
             
             
             self.rezeptDescriptionLabel.frame = CGRectMake(5, self.rezeptImageView.frame.height + self.zutatenTableView.frame.height, self.view.frame.width-10, 500)
@@ -82,10 +106,16 @@ class RezepteDetailViewController: UIViewController, UITableViewDelegate, UITabl
         
         //Alle Views anzeigen
         scrollView.addSubview(rezeptImageView)
-        scrollView.addSubview(rezeptDescriptionLabel)
+        scrollView.addSubview(anzahlView)
         scrollView.addSubview(zutatenTableView)
+        scrollView.addSubview(rezeptDescriptionLabel)
         view.addSubview(scrollView)
     }
+    
+    func stepperPressed(sender: UIStepper!){
+        anzahlTextLabel.text = Int(sender.value).description
+    }
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -134,7 +164,7 @@ class RezepteDetailViewController: UIViewController, UITableViewDelegate, UITabl
                 self.zutatenTableView.frame.size.height = CGFloat(self.zutatenArray.count * 44)
                 self.zutatenTableView.reloadData()
                 
-                self.rezeptDescriptionLabel.frame.origin.y = (self.rezeptImageView.frame.height + self.zutatenTableView.frame.height + 10)
+                self.rezeptDescriptionLabel.frame.origin.y = (self.anzahlView.frame.size.height + self.rezeptImageView.frame.height + self.zutatenTableView.frame.height + 10)
                 self.scrollView.contentSize.height = self.rezeptImageView.frame.height + self.zutatenTableView.frame.height + self.rezeptDescriptionLabel.frame.height + 40
             }) { (error) in
                 print(error.localizedDescription)
