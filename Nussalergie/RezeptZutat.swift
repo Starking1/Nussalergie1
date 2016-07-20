@@ -60,3 +60,17 @@ func +++(left: [RezeptZutat], right: [RezeptZutat]) -> [RezeptZutat] { // 2
     
     return leftArray
 }
+
+func *(left: [RezeptZutat], right: Int) -> [RezeptZutat]{
+    for object in left{
+        object.menge *= right
+    }
+    return left
+}
+
+func *= (inout left: [RezeptZutat], right: Int){
+    for object in left{
+        object.menge *= right
+    }
+}
+
