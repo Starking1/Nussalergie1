@@ -73,7 +73,6 @@ class RezepteDetailViewController: UIViewController, UITableViewDelegate, UITabl
         anzahlStepper.addTarget(self, action: #selector(stepperPressed), forControlEvents: .ValueChanged)
     
         anzahlStepperTextLabel.text = Int(anzahlStepper.value).description
-        anzahlStepperTextLabel.backgroundColor = UIColor.greenColor()
         anzahlStepperTextLabel.frame = CGRectMake(anzahlView.frame.width - anzahlStepper.frame.width - 22, 0, 30, 30)
         anzahlStepperTextLabel.center.y = anzahlView.frame.height / 2
         anzahlStepperTextLabel.sizeToFit()
@@ -181,7 +180,7 @@ class RezepteDetailViewController: UIViewController, UITableViewDelegate, UITabl
                 self.zutatenTableView.reloadData()
                 
                 self.rezeptDescriptionLabel.frame.origin.y = (self.anzahlView.frame.size.height + self.rezeptImageView.frame.height + self.zutatenTableView.frame.height + 10)
-                self.scrollView.contentSize.height = self.rezeptImageView.frame.height + self.zutatenTableView.frame.height + self.rezeptDescriptionLabel.frame.height + 40
+                self.scrollView.contentSize.height = self.rezeptImageView.frame.height + self.anzahlView.frame.height + self.zutatenTableView.frame.height + self.rezeptDescriptionLabel.frame.height + 40
             }) { (error) in
                 print(error.localizedDescription)
             }
