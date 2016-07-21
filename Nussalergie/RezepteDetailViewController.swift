@@ -21,7 +21,7 @@ class RezepteDetailViewController: UIViewController, UITableViewDelegate, UITabl
     
     let anzahlView: UIView = UIView()
     var anzahlTextLabel: UILabel = UILabel()
-    var anzahlNummerTextLabel: UILabel = UILabel()
+    var anzahlStepperTextLabel: UILabel = UILabel()
     let anzahlStepper: UIStepper = UIStepper()
     
     let scrollView: UIScrollView = UIScrollView()
@@ -60,20 +60,26 @@ class RezepteDetailViewController: UIViewController, UITableViewDelegate, UITabl
         
         //AnzahlView initialisieren
         anzahlView.frame = CGRectMake(5, self.rezeptImageView.frame.size.height + 10, self.view.frame.width-10, 40)
-        anzahlView.backgroundColor = UIColor.blueColor()
         anzahlTextLabel.text = "Anzahl"
-        anzahlTextLabel.backgroundColor = UIColor.greenColor()
         anzahlTextLabel.frame = CGRectMake(10, 0, 30, 30)
         anzahlTextLabel.center.y = anzahlView.frame.height / 2
         anzahlTextLabel.sizeToFit()
         
-        anzahlStepper.frame = CGRectMake(anzahlView.frame.width - 100, 0, 0, 0)
-        anzahlStepper.center.y = anzahlView.frame.height / 2
-        anzahlStepper.minimumValue = 0
+        anzahlStepper.frame = CGRectMake(anzahlView.frame.width - 94, 0, 0, 0)
+        
+        anzahlStepper.minimumValue = 1
+        anzahlStepper.maximumValue = 40
+        anzahlStepper.value = 4
         anzahlStepper.addTarget(self, action: #selector(stepperPressed), forControlEvents: .ValueChanged)
+    
+        anzahlStepperTextLabel.text = Int(anzahlStepper.value).description
+        anzahlStepperTextLabel.backgroundColor = UIColor.greenColor()
+        anzahlStepperTextLabel.frame = CGRectMake(anzahlView.frame.width - anzahlStepper.frame.width - 22, 0, 30, 30)
+        anzahlStepperTextLabel.center.y = anzahlView.frame.height / 2
+        anzahlStepperTextLabel.sizeToFit()
+        
+        anzahlView.addSubview(anzahlStepperTextLabel)
         anzahlView.addSubview(anzahlStepper)
-        
-        
         anzahlView.addSubview(anzahlTextLabel)
         
         
@@ -112,11 +118,21 @@ class RezepteDetailViewController: UIViewController, UITableViewDelegate, UITabl
         view.addSubview(scrollView)
     }
     
+    var ursprungAnzahl:Float = 4.0
+    
     func stepperPressed(sender: UIStepper!){
-        anzahlTextLabel.text = Int(sender.value).description
+        anzahlStepperTextLabel.text = Int(anzahlStepper.value).description
+        anzahlStepperTextLabel.sizeToFit()
+        changeMenge()
     }
     
-
+    func changeMenge(){
+        zutatenArray /= ursprungAnzahl
+        zutatenArray *= Float(anzahlStepper.value)
+        self.zutatenTableView.reloadData()
+        ursprungAnzahl = Float(anzahlStepper.value)
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

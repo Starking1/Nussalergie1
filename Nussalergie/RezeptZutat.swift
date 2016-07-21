@@ -68,9 +68,15 @@ func *(left: [RezeptZutat], right: Int) -> [RezeptZutat]{
     return left
 }
 
-func *= (inout left: [RezeptZutat], right: Int){
+func *= (inout left: [RezeptZutat], right: Float){
     for object in left{
-        object.menge *= right
+        object.menge = Int(round(Float(object.menge) * right))
+    }
+}
+
+func /= (inout left: [RezeptZutat], right: Float){
+    for object in left{
+        object.menge = Int(round(Float(object.menge)/right))
     }
 }
 
