@@ -33,6 +33,10 @@ class RezepteDetailViewController: UIViewController, UITableViewDelegate, UITabl
     
     let zutatenRef =  FIRDatabase.database().reference().child("Zutaten")
     
+    let ursprungAnzahl:Float = 4.0
+    var alteStepperValue:Float = 4.0
+    var einSchritt:[RezeptZutat] = [RezeptZutat]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -115,21 +119,25 @@ class RezepteDetailViewController: UIViewController, UITableViewDelegate, UITabl
         scrollView.addSubview(zutatenTableView)
         scrollView.addSubview(rezeptDescriptionLabel)
         view.addSubview(scrollView)
+        
+        
+        
+        
     }
-    
-    var ursprungAnzahl:Float = 4.0
     
     func stepperPressed(sender: UIStepper!){
         anzahlStepperTextLabel.text = Int(anzahlStepper.value).description
         anzahlStepperTextLabel.sizeToFit()
-        changeMenge()
-    }
-    
-    func changeMenge(){
-        zutatenArray /= ursprungAnzahl
-        zutatenArray *= Float(anzahlStepper.value)
+        
+        if Float(anzahlStepper.value) > alteStepperValue {
+            zutatenArray +++= einSchritt
+            print(einSchritt)
+            print("executed")
+        } else {
+            zutatenArray ---= einSchritt
+        }
+        alteStepperValue = Float(anzahlStepper.value)
         self.zutatenTableView.reloadData()
-        ursprungAnzahl = Float(anzahlStepper.value)
     }
     
     override func didReceiveMemoryWarning() {
@@ -177,10 +185,12 @@ class RezepteDetailViewController: UIViewController, UITableViewDelegate, UITabl
                 
                 self.zutatenArray.append(RezeptZutat(name: zutat["name"]!, menge: (zutatenDictArray[i]["menge"] as! Int), einheit: zutat["einheit"]!))
                 self.zutatenTableView.frame.size.height = CGFloat(self.zutatenArray.count * 44)
-                self.zutatenTableView.reloadData()
                 
+                self.zutatenTableView.reloadData()
                 self.rezeptDescriptionLabel.frame.origin.y = (self.anzahlView.frame.size.height + self.rezeptImageView.frame.height + self.zutatenTableView.frame.height + 10)
                 self.scrollView.contentSize.height = self.rezeptImageView.frame.height + self.anzahlView.frame.height + self.zutatenTableView.frame.height + self.rezeptDescriptionLabel.frame.height + 40
+    
+                self.einSchritt = self.zutatenArray / self.ursprungAnzahl
             }) { (error) in
                 print(error.localizedDescription)
             }

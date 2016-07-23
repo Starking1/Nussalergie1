@@ -42,8 +42,8 @@ class RezeptZutat: NSObject, NSCoding {
     
 }
 
-infix operator  +++{ associativity left precedence 140 } // 1
-func +++(left: [RezeptZutat], right: [RezeptZutat]) -> [RezeptZutat] { // 2
+infix operator  +++{ associativity left precedence 140 }
+func +++(left: [RezeptZutat], right: [RezeptZutat]) -> [RezeptZutat] {
     var leftArray = left
     var rightArray = right
     
@@ -61,6 +61,52 @@ func +++(left: [RezeptZutat], right: [RezeptZutat]) -> [RezeptZutat] { // 2
     return leftArray
 }
 
+infix operator  +++={ associativity left precedence 140 }
+func +++=(inout left: [RezeptZutat], right: [RezeptZutat]) {
+    var rightArray = right
+    
+    for object in left {
+        for (i,object2) in rightArray.enumerate() {
+            if object2.name == object.name {
+                object.menge += object2.menge
+                rightArray.removeAtIndex(i)
+            }
+        }
+    }
+    left += rightArray
+}
+
+infix operator  ---{ associativity left precedence 140 }
+func ---(left: [RezeptZutat], right: [RezeptZutat]) -> [RezeptZutat] {
+    let leftArray = left
+    var rightArray = right
+    
+    for object in leftArray {
+        for (i,object2) in rightArray.enumerate() {
+            if object2.name == object.name {
+                object.menge -= object2.menge
+                rightArray.removeAtIndex(i)
+            }
+        }
+    }
+    
+    return leftArray
+}
+
+infix operator  ---={ associativity left precedence 140 }
+func ---=(inout left: [RezeptZutat], right: [RezeptZutat]) {
+    var rightArray = right
+    
+    for object in left {
+        for (i,object2) in rightArray.enumerate() {
+            if object2.name == object.name {
+                object.menge -= object2.menge
+                rightArray.removeAtIndex(i)
+            }
+        }
+    }
+}
+
 func *(left: [RezeptZutat], right: Int) -> [RezeptZutat]{
     for object in left{
         object.menge *= right
@@ -73,6 +119,15 @@ func *= (inout left: [RezeptZutat], right: Float){
         object.menge = Int(round(Float(object.menge) * right))
     }
 }
+
+func / (left: [RezeptZutat], right: Float) -> [RezeptZutat]{
+    let leftcopy = left
+    for object in leftcopy{
+        object.menge = Int(round(Float(object.menge)/right))
+    }
+    return leftcopy
+}
+
 
 func /= (inout left: [RezeptZutat], right: Float){
     for object in left{
