@@ -143,7 +143,7 @@ class NeuesProduktNeuesProduktViewController: UIViewController, UITextFieldDeleg
                 // This can be stored in the Firebase Realtime Database
                 // It can also be used by image loading libraries like SDWebImage
                 
-                let post = ["bild": "bildname.jpg"!,
+                let post = ["bild": "\(key).jpg",
                             "einheit": self.produktEinheitTextfield.text!,
                             "menge": self.produktMengeTextfield.text!,
                             
