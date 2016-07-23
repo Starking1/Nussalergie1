@@ -111,16 +111,101 @@ class NeuesProduktNeuesProduktViewController: UIViewController, UITextFieldDeleg
         
         scrollView.addSubview(produktMengeLabel)
         scrollView.addSubview(produktMengeTextfield)
-        
+        scrollView.addSubview(postenButton)
         view.addSubview(scrollView)
         
         
         
     }
+    func pressedPostButton (sender: UIButton!){
+        //Generate Key For Storage
+        let key = self.rootRef.childByAutoId().key
+        
+        
+        //Picture Upload First
+        // Data in memory
+        let data: NSData = UIImageJPEGRepresentation(produktImageView.image!, 0.8)!;
+        
+        // Create a reference to the file you want to upload
+        let riversRef = storageRef.child("images/\(key).jpg")
+        
+        //Add metadata
+        let metadata = FIRStorageMetadata()
+        metadata.contentType = "image/jpeg"
+        
+        // Upload the file to the path "images/*name*.jpg"
+        riversRef.putData(data, metadata: metadata) { metadata, error in
+            if (error != nil) {
+                print(error?.localizedDescription)
+            } else {
+                // Metadata contains file metadata such as size, content-type, and download URL.
+                //let downloadURL = metadata!.downloadURL
+                // This can be stored in the Firebase Realtime Database
+                // It can also be used by image loading libraries like SDWebImage
+                
+                let post = ["bild": "bildname.jpg"!,
+                            "einheit": self.produktEinheitTextfield.text!,
+                            "menge": self.produktMengeTextfield.text!,
+                            
+                            "name": self.produktNameTextfield.text!,
+                            "preis": Double(self.produktKostenTextfield.text!)!]
+                
+                
+                
+                let childUpdates = ["/Produkte/\(key)": post]
+                self.rootRef.updateChildValues(childUpdates)
+            }
+        }
+    }
     
     
     func pressedTakePicture (sender: UIButton!){
  //       presentImagePickerSheet()
+    }
+    
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+        picker.dismissViewControllerAnimated(true, completion: nil)
+        produktImageView.image = info[UIImagePickerControllerEditedImage] as? UIImage
+        produktImageView.contentMode = .ScaleAspectFit
+    }
+    
+    func presentImagePickerSheet() {
+        let presentImagePickerController: UIImagePickerControllerSourceType -> () = { source in
+            let controller = UIImagePickerController()
+            controller.delegate = self
+            var sourceType = source
+            if (!UIImagePickerController.isSourceTypeAvailable(sourceType)) {
+                sourceType = .PhotoLibrary
+                print("Fallback to camera roll as a source since the simulator doesn't support taking pictures")
+            }
+            controller.sourceType = sourceType
+            controller.allowsEditing = true
+            
+            self.presentViewController(controller, animated: true, completion: nil)
+        }
+        
+        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .ActionSheet)
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel) {(action) in
+        }
+        alertController.addAction(cancelAction)
+        
+        let newPhotoAction = UIAlertAction(title: "Neues Foto Aufnehmen", style: .Default) { (action) in
+            presentImagePickerController(.Camera)
+        }
+        alertController.addAction(newPhotoAction)
+        
+        let photoLibAction = UIAlertAction(title: "Photo Library", style: .Default) { (action) in
+            presentImagePickerController(.PhotoLibrary)
+        }
+        alertController.addAction(photoLibAction)
+        
+        self.presentViewController(alertController, animated: true) {}
+        
+    }
+    
+    func imagePickerControllerDidCancel(picker: UIImagePickerController) {
+        dismissViewControllerAnimated(true, completion: nil)
     }
     
 }
