@@ -34,7 +34,13 @@ class NeuesProduktNeuesProduktViewController: UIViewController, UITextFieldDeleg
     let rootRef = FIRDatabase.database().reference()
     let storageRef = FIRStorage.storage().reference()
 
+    
+    let zutatenRef =  FIRDatabase.database().reference().child("Zutaten")
+    var zutatenBereitsArray = [RezeptZutat]()
+    
     var imagePicker: UIImagePickerController!
+    
+    
     
     
     
@@ -119,6 +125,7 @@ class NeuesProduktNeuesProduktViewController: UIViewController, UITextFieldDeleg
     }
     func pressedPostButton (sender: UIButton!){
         //Generate Key For Storage
+        let bereitsBekannteZutaten = 
         let key = self.rootRef.childByAutoId().key
         
         
@@ -144,8 +151,10 @@ class NeuesProduktNeuesProduktViewController: UIViewController, UITextFieldDeleg
                 // It can also be used by image loading libraries like SDWebImage
                 
                 let post = ["bild": "\(key).jpg",
-                            "einheit": self.produktEinheitTextfield.text!,
+                            
                             "menge": self.produktMengeTextfield.text!,
+                            
+                            "einheit": self.produktEinheitTextfield.text!,
                             
                             "name": self.produktNameTextfield.text!,
                             "preis": Double(self.produktKostenTextfield.text!)!]
@@ -153,7 +162,13 @@ class NeuesProduktNeuesProduktViewController: UIViewController, UITextFieldDeleg
                 
                 
                 let childUpdates = ["/Produkte/\(key)": post]
+                
+                
+                
+                
                 self.rootRef.updateChildValues(childUpdates)
+                
+                
             }
         }
     }
