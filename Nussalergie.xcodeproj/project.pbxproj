@@ -14,6 +14,7 @@
 		265C39881D355FA900ED611D /* EinkaufTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265C39871D355FA900ED611D /* EinkaufTableViewController.swift */; };
 		26869CA71D3B7FD20077CBEB /* NeuesProduktViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26869CA61D3B7FD20077CBEB /* NeuesProduktViewController.swift */; };
 		26BA626C1D2F9E16005D725A /* NeueRezeptViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BA626B1D2F9E16005D725A /* NeueRezeptViewController.swift */; };
+		26E826A31D7998B900BE0C20 /* SearchedZutat.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26E826A21D7998B900BE0C20 /* SearchedZutat.xib */; };
 		26F781731D297F8D00DFEF5E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F781721D297F8D00DFEF5E /* AppDelegate.swift */; };
 		26F781781D297F8D00DFEF5E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 26F781761D297F8D00DFEF5E /* Main.storyboard */; };
 		26F7817A1D297F8D00DFEF5E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 26F781791D297F8D00DFEF5E /* Assets.xcassets */; };
@@ -56,6 +57,7 @@
 		265C39871D355FA900ED611D /* EinkaufTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EinkaufTableViewController.swift; sourceTree = "<group>"; };
 		26869CA61D3B7FD20077CBEB /* NeuesProduktViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NeuesProduktViewController.swift; sourceTree = "<group>"; };
 		26BA626B1D2F9E16005D725A /* NeueRezeptViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NeueRezeptViewController.swift; sourceTree = "<group>"; };
+		26E826A21D7998B900BE0C20 /* SearchedZutat.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchedZutat.xib; sourceTree = "<group>"; };
 		26F7816F1D297F8D00DFEF5E /* Nussalergie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Nussalergie.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		26F781721D297F8D00DFEF5E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		26F781771D297F8D00DFEF5E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -171,6 +173,7 @@
 			isa = PBXGroup;
 			children = (
 				818A81531D2EBC6200E31D50 /* ZutatenCell.swift */,
+				26E826A21D7998B900BE0C20 /* SearchedZutat.xib */,
 				818A81541D2EBC6200E31D50 /* ZutatenCell.xib */,
 				818A81511D2EBA3500E31D50 /* RezeptZutat.swift */,
 			);
@@ -271,6 +274,7 @@
 				818A81561D2EBC6200E31D50 /* ZutatenCell.xib in Resources */,
 				26F7817A1D297F8D00DFEF5E /* Assets.xcassets in Resources */,
 				26F781781D297F8D00DFEF5E /* Main.storyboard in Resources */,
+				26E826A31D7998B900BE0C20 /* SearchedZutat.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

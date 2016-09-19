@@ -125,7 +125,7 @@ class NeuesProduktNeuesProduktViewController: UIViewController, UITextFieldDeleg
     }
     func pressedPostButton (sender: UIButton!){
         //Generate Key For Storage
-        let bereitsBekannteZutaten = 
+     //   let bereitsBekannteZutaten =
         let key = self.rootRef.childByAutoId().key
         
         

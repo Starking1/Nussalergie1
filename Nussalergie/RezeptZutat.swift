@@ -106,7 +106,6 @@ func ---=(inout left: [RezeptZutat], right: [RezeptZutat]) {
         }
     }
 }
-
 func *(left: [RezeptZutat], right: Int) -> [RezeptZutat]{
     for object in left{
         object.menge *= right

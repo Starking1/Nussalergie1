@@ -7,11 +7,11 @@
 //
 
 import UIKit
+import Firebase
 
 class ZutatSearchViewController: UITableViewController {
 
     var ausgewahlteZutat = [RezeptZutat]()
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,4 +43,6 @@ class ZutatSearchViewController: UITableViewController {
         
         return cell
     }
+    
+    
 }

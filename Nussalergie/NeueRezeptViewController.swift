@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 
-class NeueRezeptViewController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class NeueRezeptViewController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITableViewDelegate, UITableViewDataSource {
     
     let rezeptNavigationTitle: String = "Neues Rezept"
     let rezeptImageView: UIImageView = UIImageView()
@@ -24,18 +24,31 @@ class NeueRezeptViewController: UIViewController, UITextFieldDelegate, UIImagePi
     let ZubereitungsTextfieldheight: CGFloat = 200;
     let rezeptZutatenLabel:UILabel = UILabel()
     let rezeptZutatenButton: UIButton = UIButton()
+    let zutatenSearchTextfield: UITextField = UITextField()
     var rezeptID: Int = Int()
     let scrollView: UIScrollView = UIScrollView()
-
+    var zubereitungsDict = [String : AnyObject]()
+    let auswahlzutatenTableView: UITableView = UITableView()
+    
+    var ausgewahlteZutat = [RezeptZutat]()
+    var zutatenArray = [RezeptZutat]()
+    
     let rootRef = FIRDatabase.database().reference()
     let storageRef = FIRStorage.storage().reference()
 
+    let zutatenRef =  FIRDatabase.database().reference().child("Zutaten")
+    
     var imagePicker: UIImagePickerController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.navigationItem.title = "Neues Rezept"
+        
+        auswahlzutatenTableView.delegate = self
+        auswahlzutatenTableView.dataSource = self
+        auswahlzutatenTableView.scrollEnabled = false
+        auswahlzutatenTableView.registerNib(UINib(nibName: "SearchedZutat", bundle: nil), forCellReuseIdentifier: "searchedCell")
         
         
         
@@ -55,7 +68,6 @@ class NeueRezeptViewController: UIViewController, UITextFieldDelegate, UIImagePi
         
         rezeptNameTextfield.frame = CGRectMake(20, 55, 100, 30)
         rezeptNameTextfield.backgroundColor = UIColor.greenColor()
-        rezeptNameTextfield.addTarget(self, action: #selector(textFieldDidChange), forControlEvents: UIControlEvents.EditingChanged)
         
         rezeptDauerLabel.frame = CGRectMake(20, 100, 100, 30)
         rezeptDauerLabel.text = "Dauer"
@@ -72,9 +84,18 @@ class NeueRezeptViewController: UIViewController, UITextFieldDelegate, UIImagePi
         rezeptZubereitungsTextfield.contentVerticalAlignment = UIControlContentVerticalAlignment.Top
         rezeptZubereitungsTextfield.delegate = self
         
+        
         rezeptZutatenLabel.frame = CGRectMake(20, 210 + ZubereitungsTextfieldheight + 10, 100, 30)
         rezeptZutatenLabel.text = "Zutaten"
+        zutatenSearchTextfield.frame = CGRectMake(20,250 + ZubereitungsTextfieldheight + 10,view.frame.width - 40,30)
+        zutatenSearchTextfield.placeholder = "neue Zutat"
+        zutatenSearchTextfield.addTarget(self, action: #selector(textFieldDidChange), forControlEvents: UIControlEvents.EditingChanged)
         
+            
+            auswahlzutatenTableView.frame = CGRectMake(5, 290 + ZubereitungsTextfieldheight + 10, self.view.frame.width-10, 0)
+        //    auswahlzutatenTableView.backgroundColor = UIColor.blueColor()
+            
+         
         rezeptZutatenButton.frame = CGRectMake(view.frame.width - 120, 210 + ZubereitungsTextfieldheight + 10, 100, 30)
         rezeptZutatenButton.setTitle("Posten", forState: .Normal)
         rezeptZutatenButton.setTitleColor(UIColor.blueColor(), forState: .Normal)
@@ -90,9 +111,10 @@ class NeueRezeptViewController: UIViewController, UITextFieldDelegate, UIImagePi
         scrollView.addSubview(rezeptZubereitungsTextfield)
         scrollView.addSubview(rezeptZutatenLabel)
         scrollView.addSubview(rezeptZutatenButton)
-        
+        scrollView.addSubview(zutatenSearchTextfield)
+        scrollView.addSubview(auswahlzutatenTableView)
         view.addSubview(scrollView)
-        
+       
         
         
     }
@@ -132,7 +154,7 @@ class NeueRezeptViewController: UIViewController, UITextFieldDelegate, UIImagePi
                                     "menge" : 250],
                                     ["id": 5,
                                         "menge": 500]]]
-                
+
                 let childUpdates = ["/Rezepte/\(key)": post,
                                     "/Zubereitung/\(key)": zubereitung]
                 self.rootRef.updateChildValues(childUpdates)
@@ -156,18 +178,24 @@ class NeueRezeptViewController: UIViewController, UITextFieldDelegate, UIImagePi
     
     
     //.addTarget(self, action: #selector(pressedTakePicture), forControlEvents: .TouchUpInside)
-    func textFieldDidChange(textField: UITextField) {
-       findZutaten(textField.text!)
+    func textFieldDidChange(textField: UISearchBar) {
+        findZutatenneuesRezept(textField.text!)
+   
+       self.ausgewahlteZutat.removeAll()
     }
     
-    func findZutaten(text: String)->Void{
+    func findZutatenneuesRezept(text: String)->Void{
         if !text.isEmpty {
-        rootRef.child("Zutaten").queryOrderedByChild("name").queryStartingAtValue(text).queryEndingAtValue(text+"\u{f8ff}").observeSingleEventOfType(.Value, withBlock: { snapshot in
-            var zutat = RezeptZutat()
-            for z in snapshot.children{
-                zutat.name = z.value!["name"] as! String
-                print(zutat.name)
-            }
+            rootRef.child("Zutaten").queryOrderedByChild("name").queryStartingAtValue(text).queryEndingAtValue(text+"\u{f8ff}").observeSingleEventOfType(.Value , withBlock: { snapshot in let zutat = RezeptZutat()
+                for z in snapshot.children{
+                    zutat.name = z.value!["name"] as! String
+                    zutat.einheit = z.value!["einheit"] as! String
+                    print(zutat.name)
+                    self.ausgewahlteZutat.append(zutat)
+                    print(self.ausgewahlteZutat[0].name)
+                }
+               
+                self.populateZutatenTableView()
         })
         }
     }
@@ -184,34 +212,119 @@ class NeueRezeptViewController: UIViewController, UITextFieldDelegate, UIImagePi
             }
             controller.sourceType = sourceType
             controller.allowsEditing = true
-            
             self.presentViewController(controller, animated: true, completion: nil)
         }
-        
         let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .ActionSheet)
-        
         let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel) {(action) in
         }
         alertController.addAction(cancelAction)
-        
         let newPhotoAction = UIAlertAction(title: "Neues Foto Aufnehmen", style: .Default) { (action) in
             presentImagePickerController(.Camera)
         }
         alertController.addAction(newPhotoAction)
-        
         let photoLibAction = UIAlertAction(title: "Photo Library", style: .Default) { (action) in
             presentImagePickerController(.PhotoLibrary)
         }
         alertController.addAction(photoLibAction)
-        
         self.presentViewController(alertController, animated: true) {}
+    }
+    
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 2
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if section == 0{
+            return ausgewahlteZutat.count
+        }
+        else{
+            return zutatenArray.count
+        }
+    }
+    
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
+        let cell = tableView.dequeueReusableCellWithIdentifier("searchedCell", forIndexPath: indexPath)
+        var zutat = RezeptZutat()
+        let zutatenCellTextField = cell.viewWithTag(2) as? UITextField
+        var buttonImage = UIImage()
+        if indexPath.section == 1{
+            zutatenCellTextField?.userInteractionEnabled = false
+            buttonImage = UIImage.fontAwesomeIconWithName(.CheckCircleO, textColor: UIColor.blackColor(), size: CGSize(width: 30, height: 30))
+            zutat = zutatenArray[indexPath.row]
+            zutatenCellTextField?.text = "\(zutat.menge)"
+        }
+        if indexPath.section == 0{
+            zutatenCellTextField?.userInteractionEnabled = true
+            zutatenCellTextField?.text = ""
+            buttonImage = UIImage.fontAwesomeIconWithName(.CircleO, textColor: UIColor.blackColor(), size: CGSize(width: 30, height: 30))
+            zutat = ausgewahlteZutat[indexPath.row]
+        }
+        
+        if let zutatenCellNameLabel = cell.viewWithTag(1) as? UILabel {
+            zutatenCellNameLabel.text = zutat.name
+        }
+        if let zutatenCellEinheitLabel = cell.viewWithTag(3) as? UILabel {
+            zutatenCellEinheitLabel.text = zutat.einheit
+        }
+ 
+        if let zutatenTakenButton = cell.viewWithTag(4) as? UIButton{
+            zutatenTakenButton.setTitle("", forState: .Normal)
+            zutatenTakenButton.setImage(buttonImage, forState: .Normal)
+            zutatenTakenButton.addTarget(self, action: #selector(pressedTakenButton), forControlEvents: .TouchUpInside)
+        }
+        
+        cell.selectionStyle = .None
+        
+        return cell
     }
     
     // MARK: UIImagePickerControllerDelegate
+    
+    func pressedTakenButton (sender: UIButton) {
+        let touchPoint: CGPoint = sender.convertPoint(CGPointZero, toView: auswahlzutatenTableView)
+        let clickedButtonIndexPath: NSIndexPath = auswahlzutatenTableView.indexPathForRowAtPoint(touchPoint)!
+        let thisTextField: UITextField = (auswahlzutatenTableView.cellForRowAtIndexPath(clickedButtonIndexPath)?.viewWithTag(2) as? UITextField)!
+        auswahlzutatenTableView.beginUpdates()
+        if clickedButtonIndexPath.section == 0{
+            var done = false
+            for zutat in zutatenArray {
+                if (zutat.name == ausgewahlteZutat[clickedButtonIndexPath.row].name){
+                    if !(thisTextField.text == "") {
+                        zutat.menge += Int(thisTextField.text!)!
+                    }
+                    done = true;
+                }
+            }
+            if(!done){
+                zutatenArray.append(ausgewahlteZutat[clickedButtonIndexPath.row])
+                let newIndexPath = NSIndexPath(forRow: zutatenArray.count - 1, inSection:1)
+                auswahlzutatenTableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Right)
+                if !(thisTextField.text == "") {
+                    zutatenArray[zutatenArray.count-1].menge = Int(thisTextField.text!)!
+                }
+                thisTextField.text = ""
+            }
+            
+        } else{
+            auswahlzutatenTableView.deleteRowsAtIndexPaths([clickedButtonIndexPath], withRowAnimation: .Right)
+            zutatenArray.removeAtIndex(clickedButtonIndexPath.row)
+        }
+       
+        auswahlzutatenTableView.endUpdates()
+        populateZutatenTableView()
+        
+    }
     
     func imagePickerControllerDidCancel(picker: UIImagePickerController) {
         dismissViewControllerAnimated(true, completion: nil)
     }
     
+    func populateZutatenTableView() {
+            
+                auswahlzutatenTableView.frame.size.height = CGFloat((self.ausgewahlteZutat.count + self.zutatenArray.count) * 44)
+                auswahlzutatenTableView.reloadData()
+                self.scrollView.contentSize.height = 250 + self.ZubereitungsTextfieldheight + 10 + auswahlzutatenTableView.frame.height + 40
+    }
 }

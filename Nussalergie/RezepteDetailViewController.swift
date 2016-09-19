@@ -37,6 +37,7 @@ class RezepteDetailViewController: UIViewController, UITableViewDelegate, UITabl
     var alteStepperValue:Float = 4.0
     var einSchritt:[RezeptZutat] = [RezeptZutat]()
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -75,7 +76,9 @@ class RezepteDetailViewController: UIViewController, UITableViewDelegate, UITabl
         anzahlStepper.maximumValue = 40
         anzahlStepper.value = 4
         anzahlStepper.addTarget(self, action: #selector(stepperPressed), forControlEvents: .ValueChanged)
-    
+
+       
+        
         anzahlStepperTextLabel.text = Int(anzahlStepper.value).description
         anzahlStepperTextLabel.frame = CGRectMake(anzahlView.frame.width - anzahlStepper.frame.width - 22, 0, 30, 30)
         anzahlStepperTextLabel.center.y = anzahlView.frame.height / 2
@@ -93,7 +96,7 @@ class RezepteDetailViewController: UIViewController, UITableViewDelegate, UITabl
             
             
             self.zutatenTableView.frame = CGRectMake(5, self.anzahlView.frame.size.height + self.rezeptImageView.frame.height + 5, self.view.frame.width-10, 0)
-            //self.zutatenTableView.backgroundColor = UIColor.blueColor()
+         //   self.zutatenTableView.backgroundColor = UIColor.blueColor()
             
             
             self.rezeptDescriptionLabel.frame = CGRectMake(5, self.rezeptImageView.frame.height + self.zutatenTableView.frame.height, self.view.frame.width-10, 500)
@@ -106,7 +109,7 @@ class RezepteDetailViewController: UIViewController, UITableViewDelegate, UITabl
             
             
             self.populateZutatenTableView(self.zubereitungsDict)
-            
+           
             
         }){ (error) in
             print(error.localizedDescription)
@@ -122,20 +125,13 @@ class RezepteDetailViewController: UIViewController, UITableViewDelegate, UITabl
         
         
         
-        
     }
     
     func stepperPressed(sender: UIStepper!){
         anzahlStepperTextLabel.text = Int(anzahlStepper.value).description
         anzahlStepperTextLabel.sizeToFit()
-        
-        if Float(anzahlStepper.value) > alteStepperValue {
-            zutatenArray +++= einSchritt
-            print(einSchritt)
-            print("executed")
-        } else {
-            zutatenArray ---= einSchritt
-        }
+        zutatenArray /= alteStepperValue
+        zutatenArray *= Float(anzahlStepper.value)
         alteStepperValue = Float(anzahlStepper.value)
         self.zutatenTableView.reloadData()
     }
@@ -177,7 +173,7 @@ class RezepteDetailViewController: UIViewController, UITableViewDelegate, UITabl
     func populateZutatenTableView(zubereitungsDict: NSDictionary) {
         
         let zutatenDictArray = (zubereitungsDict["zutaten"] as! [NSDictionary])
-        
+       
         for i in 0..<zutatenDictArray.count{
             let id = String(zutatenDictArray[i]["id"]!)
             self.zutatenRef.child(id).observeSingleEventOfType(.Value, withBlock: { (snapshot) in
@@ -189,8 +185,8 @@ class RezepteDetailViewController: UIViewController, UITableViewDelegate, UITabl
                 self.zutatenTableView.reloadData()
                 self.rezeptDescriptionLabel.frame.origin.y = (self.anzahlView.frame.size.height + self.rezeptImageView.frame.height + self.zutatenTableView.frame.height + 10)
                 self.scrollView.contentSize.height = self.rezeptImageView.frame.height + self.anzahlView.frame.height + self.zutatenTableView.frame.height + self.rezeptDescriptionLabel.frame.height + 40
-    
-                self.einSchritt = self.zutatenArray / self.ursprungAnzahl
+                
+                
             }) { (error) in
                 print(error.localizedDescription)
             }
