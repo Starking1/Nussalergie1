@@ -186,18 +186,19 @@ class NeueRezeptViewController: UIViewController, UITextFieldDelegate, UIImagePi
     
     func findZutatenneuesRezept(text: String)->Void{
         if !text.isEmpty {
-            rootRef.child("Zutaten").queryOrderedByChild("name").queryStartingAtValue(text).queryEndingAtValue(text+"\u{f8ff}").observeSingleEventOfType(.Value , withBlock: { snapshot in let zutat = RezeptZutat()
+            rootRef.child("Zutaten").queryOrderedByChild("name").queryStartingAtValue(text).queryEndingAtValue(text+"\u{f8ff}").observeSingleEventOfType(.Value , withBlock: { snapshot in
                 for z in snapshot.children{
+                    let zutat = RezeptZutat()
                     zutat.name = z.value!["name"] as! String
                     zutat.einheit = z.value!["einheit"] as! String
                     print(zutat.name)
                     self.ausgewahlteZutat.append(zutat)
-                    print(self.ausgewahlteZutat[0].name)
+                    print(self.ausgewahlteZutat.description)
                 }
-               
                 self.populateZutatenTableView()
         })
         }
+        
     }
     
     
